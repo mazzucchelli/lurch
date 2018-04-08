@@ -1,1 +1,1 @@
-console.log('Mario say welcome!')
+console.log('Mario say welcome!');

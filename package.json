@@ -4,6 +4,7 @@
   "description": "mimir",
   "author": "mmazzucchelli <mazzucchelli.wrk@gmail.com>",
   "scripts": {
+    "start": "gulp",
     "compile": "gulp compile",
     "compile:scss": "gulp styles",
     "compile:js": "gulp scripts",

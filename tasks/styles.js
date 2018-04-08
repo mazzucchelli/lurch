@@ -1,5 +1,6 @@
 const configs               = require('../gulpconfigs.js');
 const buffer                = require('vinyl-buffer');
+const chalk                 = require('chalk');
 const gulp                  = require('gulp');
 const gulpLoadPlugins       = require('gulp-load-plugins');
 
@@ -14,13 +15,13 @@ function scssCustomReporter(file) {
     let issueLength = file.scsslint.issues.length;
     console.logissueLength
     if (!file.scsslint.success) {
-        console.log(chalk.bold( '\n    ' + issueLength + ' issues found in: ' + cleanPath + '\n'));
+        console.log(chalk.bold( '\n- ' + issueLength + ' issues found in: ' + cleanPath + '\n'));
         file.scsslint.issues.forEach(function(issue, index)  {
             if ( issue.severity == 'error') {
-                console.log(chalk.red('        🔴   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
+                console.log(chalk.red('    🔴   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
                 (index == issueLength - 1) ? console.log(' ') : ''
             } else if ( issue.severity == 'warning' ) {
-                console.log(chalk.yellow('        🔶   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
+                console.log(chalk.yellow('    🔶   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
                 (index == issueLength - 1) ? console.log(' ') : ''
             }
         })
@@ -28,7 +29,7 @@ function scssCustomReporter(file) {
 };
 
 var compileStyles = {
-    init: function () {
+    compileScss: function () {
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
             .pipe($.sourcemaps.init())
             .pipe($.sass())
@@ -48,12 +49,12 @@ var compileStyles = {
                 // console.log();
             });
     },
-    beautify: function () {
+    beautifyScss: function () {
         return gulp.src(configs.paths.dev.scss + '**/*.scss', {base: './'})
         .pipe($.csscomb())
         .pipe(gulp.dest('./'))
     },
-    lint: function () {
+    lintScss: function () {
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
         .pipe($.scsslint({
             customReport: scssCustomReporter
