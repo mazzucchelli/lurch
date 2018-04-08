@@ -4,10 +4,12 @@
   "description": "mimir",
   "author": "mmazzucchelli <mazzucchelli.wrk@gmail.com>",
   "scripts": {
+    "compile": "gulp compile",
     "compile:scss": "gulp styles",
     "compile:js": "gulp scripts",
     "compile:html": "gulp html",
     "compile:sprite": "gulp icons",
+    "compile:vendor": "gulp vendor",
     "enchant:scss": "gulp beautifyScss",
     "enchant:media": "gulp images",
     "lint:scss": "gulp scssLint"
@@ -28,6 +30,7 @@
     "gulp-csscomb": "^3.0.8",
     "gulp-filesize": "0.0.6",
     "gulp-imagemin": "^4.1.0",
+    "gulp-load-plugins": "^1.5.0",
     "gulp-nunjucks": "^3.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.0",
