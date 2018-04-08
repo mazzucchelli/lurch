@@ -31,17 +31,9 @@ bower_components
 # Compiled files
 # - - -
 
-app/scripts/bundle.js
-app/scripts/bundle.js.map
-app/styles/style.css
-app/styles/style.css.map
-app/media/sprite.svg
-
-build/scripts/bundle.js
-build/scripts/bundle.js.map
-build/styles/style.css
-build/styles/style.css.map
-build/media/sprite.svg
+app
+build
+gulp_bak
 
 # - - -
 # IDE Generated Files & Folders
