@@ -1,0 +1,17 @@
+const enableUpload = false;
+const enableServer = false;
+const enableSourcemaps = {
+    styles: true
+    scripts: true
+    vendor: false
+}
+const enableUglify = {
+    styles: true
+    scripts: true
+    vendor: false
+}
+
+module.exports = enableUpload;
+module.exports = enableServer;
+module.exports = enableSourcemaps;
+module.exports = enableUglify;
