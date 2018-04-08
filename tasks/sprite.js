@@ -10,7 +10,7 @@ const $ = gulpLoadPlugins({
 });
 
 var compileSprite = {
-    init: function () {
+    compileSvg: function () {
         return gulp.src(configs.paths.dev.svg + '*.svg')
             .pipe(buffer())
             .pipe($.rename(opt => {

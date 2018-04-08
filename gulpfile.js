@@ -16,13 +16,7 @@ const spriteTask            = require('./tasks/sprite');
 // console.log('env', process.env.NODE_ENV);
 
 // npm run compile
-gulp.task('compile', gulp.parallel(
-    scriptsTask.init, 
-    stylesTask.compileScss, 
-    htmlTask.init, 
-    spriteTask.init, 
-    vendorTask.init
-));
+gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors));
 
 // npm run compile:scss
 gulp.task('styles', gulp.series(stylesTask.lintScss, stylesTask.compileScss));
@@ -34,19 +28,19 @@ gulp.task('beautifyScss', stylesTask.beautifyScss);
 gulp.task('scssLint', stylesTask.lintScss);
 
 // npm run enchant:media
-gulp.task('images', imagesTask.init);
+gulp.task('images', imagesTask.minifyImg);
 
 // npm run compile:html
-gulp.task('html', htmlTask.init);
+gulp.task('html', htmlTask.compileHtml);
 
 // npm run compile:vendor
-gulp.task('vendor', vendorTask.init);
+gulp.task('vendor', vendorTask.compileVendors);
 
 // npm run compile:js
-gulp.task('scripts', scriptsTask.init);
+gulp.task('scripts', scriptsTask.compileJs);
 
 // npm run compile:sprite
-gulp.task('icons', spriteTask.init);
+gulp.task('icons', spriteTask.compileSvg);
 
 // npm run start
 let tasksRunning = false;

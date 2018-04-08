@@ -3,7 +3,7 @@ const gulp                  = require('gulp');
 const $                     = require('gulp-load-plugins')();
 
 var compileHtml = {
-    init: function() {
+    compileHtml: function() {
         return gulp.src(configs.dev + '*.{html, njk}')
             .pipe($.nunjucks.compile())
             .pipe(gulp.dest(configs.app))

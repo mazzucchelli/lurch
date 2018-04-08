@@ -21,7 +21,7 @@ if (typeof configs.webpack.entries === 'string') {
 }
 
 var compileScripts = {
-    init: function () {
+    compileJS: function () {
         return gulp.src(filesArray)
             .pipe($.webpack({
                 entry: entries,

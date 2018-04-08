@@ -3,7 +3,7 @@ const gulp                  = require('gulp');
 const $                     = require('gulp-load-plugins')();
 
 var imagesMin = {
-    init: function() {
+    minifyImg: function() {
         return gulp.src(configs.paths.dev.images + '*')
             .pipe($.imagemin([
                 $.imagemin.gifsicle({interlaced: true}),
