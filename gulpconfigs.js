@@ -1,23 +1,28 @@
+// TODO Get folder values from env variables 
 const dev = './dev/';
 const app = './app/';
 const build = './build/';
 const pkg = './node_modules/';
 
 module.exports = {
-    dev, app, build,
     paths: {
         dev: {
+            base: dev,
             js: dev + 'js/',
             scss: dev + 'scss/',
             images: dev + 'images/',
-            svg: dev + 'svg/'
+            svg: dev + 'svg/',
+            fonts: dev + 'fonts/',
+            tempfonts: './fontdest/'
         },
         app: {
+            base: app,
             scripts: app + 'scripts/',
             styles: app + 'styles/',
             media: app + 'media/'
         },
         build: {
+            base: build,
             scripts: build + 'scripts/',
             styles: build + 'styles/',
             media: build + 'media/'
@@ -28,6 +33,12 @@ module.exports = {
             pkg + 'picturefill/dist/picturefill.js'
         ]
     },
+    todowatch: [
+        dev + '*.{html|njk}',
+        dev + 'js/**/*.js',
+        dev + 'scss/**/*.scss',
+        'tasks/*.js'
+    ],
     webpack: {
         entries: [
             'main.js'

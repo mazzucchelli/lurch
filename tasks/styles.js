@@ -11,7 +11,7 @@ const $ = gulpLoadPlugins({
 });
 
 function scssCustomReporter(file) {
-    let cleanPath = file.path.substring(file.path.indexOf(configs.dev.substring(configs.dev.indexOf('./') + 1)) + 1)
+    let cleanPath = file.path.substring(file.path.indexOf(configs.paths.dev.base.substring(configs.paths.dev.base.indexOf('./') + 1)) + 1)
     let issueLength = file.scsslint.issues.length;
     console.logissueLength
     if (!file.scsslint.success) {
@@ -56,10 +56,10 @@ var compileStyles = {
     },
     lintScss: function () {
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
-        .pipe($.scsslint({
-            customReport: scssCustomReporter
-        }))
-        .pipe(gulp.dest('./reports'))
+            .pipe($.scsslint({
+                'reporterOutput': './reports/scssReport.json',
+                customReport: scssCustomReporter
+            }))
     }
 }
 

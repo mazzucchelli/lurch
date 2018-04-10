@@ -11,8 +11,9 @@ const scriptsTask           = require('./tasks/scripts');
 const stylesTask            = require('./tasks/styles');
 const vendorTask            = require('./tasks/vendor');
 const spriteTask            = require('./tasks/sprite');
+const fontsTask             = require('./tasks/fonts');
+const todoTask              = require('./tasks/todo');
 
-// const filesize              = require('gulp-filesize');
 // console.log('env', process.env.NODE_ENV);
 
 // npm run compile
@@ -39,8 +40,17 @@ gulp.task('vendor', vendorTask.compileVendors);
 // npm run compile:js
 gulp.task('scripts', scriptsTask.compileJs);
 
+// npm run lint:js
+gulp.task('jsLint', scriptsTask.lintJs);
+
 // npm run compile:sprite
 gulp.task('icons', spriteTask.compileSvg);
+
+// npm run compile:fonts
+gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
+
+// npm run compile:todo
+gulp.task('todo', todoTask.compileTodo);
 
 // npm run start
 let tasksRunning = false;
@@ -84,6 +94,10 @@ gulp.task('default', () => {
 
         else if (['.html', '.njk'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('html') === -1) {
             tasks.push('html')
+        }
+
+        else if (['.ttf', '.otf'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('fonts') === -1) {
+            tasks.push('fonts')
         }
 
         if (tasksDebounce) {

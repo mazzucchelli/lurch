@@ -3,6 +3,7 @@ const gulp                  = require('gulp');
 const path                  = require('path');
 const UglifyJSPlugin        = require('uglifyjs-webpack-plugin');
 const $                     = require('gulp-load-plugins')();
+const eslint                = require('gulp-eslint');
 
 let entries = {};
 let filesArray = [];
@@ -48,6 +49,18 @@ var compileScripts = {
             .on('finish', () => {
                 // console.log();
             });
+    },
+    // TODO Lint and autofix javascript
+    lintJs: function() {
+        return gulp.src(configs.paths.dev.js + '**/*.js')
+            .pipe(eslint({
+                fix: true,
+                // TODO Explore eslint configuration
+                configFile: configs.paths.dev.js + 'eslint.json'
+            }))
+            // eslint.format() outputs the lint results to the console.
+            // Alternatively use eslint.formatEach() (see Docs).
+            .pipe(eslint.format())
     }
 }
 
