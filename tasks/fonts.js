@@ -30,7 +30,7 @@ var fontsTask = {
     },
     moveFontFiles: function() {
         return gulp.src(configs.paths.dev.tempfonts + '*.{eot,svg,ttf,woff,woff2}')
-            .pipe(gulp.dest(configs.paths.app.styles + 'fonts/'))
+            .pipe(gulp.dest(configs.paths.dest.styles + 'fonts/'))
             .on('finish', () => {
                 del(configs.paths.dev.tempfonts + '**');
             });

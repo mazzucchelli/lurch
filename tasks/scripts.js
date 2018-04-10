@@ -7,29 +7,30 @@ const eslint                = require('gulp-eslint');
 
 let entries = {};
 let filesArray = [];
+
 if (typeof configs.webpack.entries === 'string') {
     let file = configs.paths.dev.js + configs.webpack.entries;
     filesArray.push(file)
     entries[ path.basename(file).slice(0, - path.extname(file).length) ] = path.resolve(file);
-    // console.log('filesArray -> ' + filesArray);
 } else {
     configs.webpack.entries.forEach(entry => {
         let file = configs.paths.dev.js + entry;
         filesArray.push(file)
         entries[ path.basename(file).slice(0, - path.extname(file).length) ] = path.resolve(file);
-        // console.log('filesArray -> ' + filesArray);
     })
 }
 
 var compileScripts = {
     compileJs: function () {
+        const toSourceMaps = process.env.NODE_ENV !== 'prod';
+        const devtool = (toSourceMaps) ? 'source-map' : '';
         return gulp.src(filesArray)
             .pipe($.webpack({
                 entry: entries,
                 output: {
                     filename: '[name].min.js'
                 },
-                devtool: 'source-map',
+                devtool: devtool,
                 module: {
                     loaders: [{
                         test: /\.js$/,
@@ -45,7 +46,7 @@ var compileScripts = {
                     })
                 ]
             }))
-            .pipe(gulp.dest(configs.paths.app.scripts))
+            .pipe(gulp.dest(configs.paths.dest.scripts))
             .on('finish', () => {
                 // console.log();
             });

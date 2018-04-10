@@ -16,7 +16,7 @@ var imagesMin = {
                     ]
                 })
             ]))
-            .pipe(gulp.dest(configs.paths.app.media))
+            .pipe(gulp.dest(configs.paths.dest.media))
             .on('finish', () => {
                 // console.log();
             });

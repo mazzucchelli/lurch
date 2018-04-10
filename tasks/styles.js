@@ -3,6 +3,7 @@ const buffer                = require('vinyl-buffer');
 const chalk                 = require('chalk');
 const gulp                  = require('gulp');
 const gulpLoadPlugins       = require('gulp-load-plugins');
+const gulpif                = require('gulp-if');
 
 const $ = gulpLoadPlugins({
     rename: {
@@ -30,8 +31,9 @@ function scssCustomReporter(file) {
 
 var compileStyles = {
     compileScss: function () {
+        const toSourceMaps = process.env.NODE_ENV !== 'prod';
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
-            .pipe($.sourcemaps.init())
+            .pipe(gulpif(toSourceMaps, $.sourcemaps.init()))
             .pipe($.sass())
             .pipe($.autoprefixer({
                 browsers: [
@@ -43,8 +45,8 @@ var compileStyles = {
                 grid: false
             }))
             .pipe($.cleancss())
-            .pipe($.sourcemaps.write('.'))
-            .pipe(gulp.dest(configs.paths.app.styles))
+            .pipe(gulpif(toSourceMaps, $.sourcemaps.write('.')))
+            .pipe(gulp.dest(configs.paths.dest.styles))
             .on('finish', () => {
                 // console.log();
             });

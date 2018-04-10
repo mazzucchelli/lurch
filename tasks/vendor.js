@@ -6,7 +6,7 @@ var vendor = {
     compileVendors: function() {
         return gulp.src(configs.paths.vendors)
             .pipe($.concat('vendor.min.js'))
-            .pipe(gulp.dest(configs.paths.app.scripts))
+            .pipe(gulp.dest(configs.paths.dest.scripts))
             .on('finish', () => {
                 // console.log();
             });

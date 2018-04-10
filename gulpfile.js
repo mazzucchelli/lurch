@@ -16,10 +16,10 @@ const todoTask              = require('./tasks/todo');
 
 // console.log('env', process.env.NODE_ENV);
 
-// npm run compile
-gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors));
+// npm run compile || NODE_ENV='prod' gulp compile
+gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
 
-// npm run compile:scss
+// npm run compile:scss || NODE_ENV='prod' gulp build:scss
 gulp.task('styles', gulp.series(stylesTask.lintScss, stylesTask.compileScss));
 
 // npm run enchant:scss
@@ -37,7 +37,7 @@ gulp.task('html', htmlTask.compileHtml);
 // npm run compile:vendor
 gulp.task('vendor', vendorTask.compileVendors);
 
-// npm run compile:js
+// npm run compile:js || NODE_ENV='prod' gulp build:js
 gulp.task('scripts', scriptsTask.compileJs);
 
 // npm run lint:js

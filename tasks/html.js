@@ -6,7 +6,7 @@ var compileHtml = {
     compileHtml: function() {
         return gulp.src(configs.paths.dev.base + '*.{html, njk}')
             .pipe($.nunjucks.compile())
-            .pipe(gulp.dest(configs.paths.app.base))
+            .pipe(gulp.dest(configs.paths.dest.base))
             .on('finish', () => {
                 // console.log();
             });

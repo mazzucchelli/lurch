@@ -4,6 +4,8 @@ const app = './app/';
 const build = './build/';
 const pkg = './node_modules/';
 
+const dest = (process.env.NODE_ENV == 'prod') ? build : app;
+
 module.exports = {
     paths: {
         dev: {
@@ -15,22 +17,16 @@ module.exports = {
             fonts: dev + 'fonts/',
             tempfonts: './fontdest/'
         },
-        app: {
-            base: app,
-            scripts: app + 'scripts/',
-            styles: app + 'styles/',
-            media: app + 'media/'
-        },
-        build: {
-            base: build,
-            scripts: build + 'scripts/',
-            styles: build + 'styles/',
-            media: build + 'media/'
+        dest: {
+            base: dest,
+            scripts: dest + 'scripts/',
+            styles: dest + 'styles/',
+            media: dest + 'media/'
         },
         vendors: [
-            pkg + 'jquery/dist/jquery.js',
-            pkg + 'svg4everybody/dist/svg4everybody.js',
-            pkg + 'picturefill/dist/picturefill.js'
+            pkg + 'jquery/dist/jquery.min.js',
+            pkg + 'svg4everybody/dist/svg4everybody.min.js',
+            pkg + 'picturefill/dist/picturefill.min.js'
         ]
     },
     todowatch: [

@@ -9,6 +9,8 @@ const $ = gulpLoadPlugins({
     }
 });
 
+const example = (process.env.NODE_ENV !== 'prod') ? true : false;
+
 var compileSprite = {
     compileSvg: function () {
         return gulp.src(configs.paths.dev.svg + '*.svg')
@@ -31,7 +33,7 @@ var compileSprite = {
                     }
                 }
             }))
-            .pipe(gulp.dest(configs.paths.app.media))
+            .pipe(gulp.dest(configs.paths.dest.media))
             .on('finish', () => {
                 // console.log();
             });
