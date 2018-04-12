@@ -16,6 +16,7 @@
     "compile:vendor": "gulp vendor",
     "enchant:scss": "gulp beautifyScss",
     "enchant:media": "gulp images",
+    "enchant:svg": "gulp svgmin",
     "lint:scss": "gulp scssLint",
     "lint:js": "gulp jsLint",
     "todo": "gulp todo"
@@ -49,6 +50,7 @@
     "gulp-scss-lint": "^0.6.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svg-sprite": "^1.4.0",
+    "gulp-svgmin": "^1.2.4",
     "gulp-todo": "^5.4.0",
     "gulp-webpack": "^1.5.0",
     "lodash": "^4.17.5",

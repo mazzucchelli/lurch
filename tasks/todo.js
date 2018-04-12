@@ -19,6 +19,8 @@ var todoTask = {
             .pipe(gulp.dest('./app/'))
             
             // TODO Generate html
+            // TODO Prompt tasks
+            
             /*
             .pipe(todo({
                 fileName: 'todo.json',

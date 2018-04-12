@@ -1,6 +1,7 @@
 const configs               = require('../gulpconfigs.js');
 const buffer                = require('vinyl-buffer');
 const gulp                  = require('gulp');
+const svgmin                = require('gulp-svgmin');
 const gulpLoadPlugins       = require('gulp-load-plugins');
 
 const $ = gulpLoadPlugins({
@@ -33,10 +34,16 @@ var compileSprite = {
                     }
                 }
             }))
-            .pipe(gulp.dest(configs.paths.dest.media))
-            .on('finish', () => {
-                // console.log();
-            });
+            .pipe(gulp.dest(configs.paths.dest.media));
+    },
+    minifySvg: function () {
+        return gulp.src(configs.paths.dev.svg + '*.svg')
+            .pipe(svgmin({
+                js2svg: {
+                    pretty: true
+                }
+            }))
+            .pipe(gulp.dest(configs.paths.dev.svg));
     }
 }
 

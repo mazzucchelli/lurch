@@ -14,7 +14,7 @@ const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
 
-// console.log('env', process.env.NODE_ENV);
+// TODO: clean task | global and for every ext files
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
@@ -44,7 +44,10 @@ gulp.task('scripts', scriptsTask.compileJs);
 gulp.task('jsLint', scriptsTask.lintJs);
 
 // npm run compile:sprite
-gulp.task('icons', spriteTask.compileSvg);
+gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
+
+// npm run enchant:svg
+gulp.task('svgmin', spriteTask.minifySvg);
 
 // npm run compile:fonts
 gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
