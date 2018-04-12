@@ -3,8 +3,6 @@ const gulp                  = require('gulp');
 const fontgen               = require('gulp-fontgen');
 const $                     = require('gulp-load-plugins')();
 const del                   = require("del");
-
-// FIXME update with `gulp-load-plugins`
 const replace               = require('gulp-replace');
 const rename                = require('gulp-rename');
 const concat                = require('gulp-concat');
