@@ -13,6 +13,7 @@ const vendorTask            = require('./tasks/vendor');
 const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
+const criticalTask          = require('./tasks/critical');
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
@@ -20,26 +21,26 @@ gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss
 // npm run compile:scss || NODE_ENV='prod' gulp build:scss
 gulp.task('styles', gulp.series(stylesTask.lintScss, stylesTask.compileScss));
 
-// npm run compile:html
+// npm run compile:html || NODE_ENV='prod' gulp build:html
 gulp.task('html', htmlTask.compileHtml);
 
-// npm run compile:vendor
+// npm run compile:vendor || NODE_ENV='prod' gulp build:vendor
 gulp.task('vendor', vendorTask.compileVendors);
 
 // npm run compile:js || NODE_ENV='prod' gulp build:js
 gulp.task('scripts', scriptsTask.compileJs);
 
-// npm run compile:sprite
+// npm run compile:sprite || NODE_ENV='prod' gulp build:sprite
 gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
 
-// npm run compile:fonts
+// npm run compile:fonts || NODE_ENV='prod' gulp build:fonts
 gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
+
+// npm run compile:media || NODE_ENV='prod' gulp build:build
+gulp.task('imgmin', imagesTask.minifyImg);
 
 // npm run compile:todo
 gulp.task('todo', todoTask.compileTodo);
-
-// npm run enchant:media
-gulp.task('imgmin', imagesTask.minifyImg);
 
 // npm run enchant:svg
 gulp.task('svgmin', spriteTask.minifySvg);
@@ -53,7 +54,13 @@ gulp.task('scssLint', stylesTask.lintScss);
 // npm run lint:js -- just a test 
 gulp.task('jsLint', scriptsTask.lintJs);
 
+// npm run scrape
+gulp.task('scrape', gulp.series(criticalTask.puppeteer, criticalTask.fixPaths, criticalTask.compileCritical));
 
+// npm run puppeteer
+gulp.task('puppeteer', criticalTask.puppeteer);
+gulp.task('puppeteer-fixpath', criticalTask.fixPaths);
+gulp.task('puppeteer-compileCritical', criticalTask.compileCritical);
 
 // npm run start
 let tasksRunning = false;

@@ -19,12 +19,15 @@
     "build:vendor": "NODE_ENV='prod' gulp vendor",
     "compile:fonts": "gulp fonts",
     "build:fonts": "NODE_ENV='prod' gulp fonts",
+    "compile:media": "gulp imgmin",
+    "build:media": "NODE_ENV='prod' gulp imgmin",
     "enchant:scss": "gulp beautifyScss",
-    "enchant:media": "gulp imgmin",
     "enchant:svg": "gulp svgmin",
     "lint:scss": "gulp scssLint",
     "lint:js": "gulp jsLint",
-    "todo": "gulp todo"
+    "todo": "gulp todo",
+    "scrape": "gulp scrape",
+    "puppeteer": "gulp puppeteer"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -35,12 +38,15 @@
     "babel-preset-stage-2": "6.24.1",
     "babili-webpack-plugin": "0.1.2",
     "chalk": "^2.3.2",
+    "critical": "^1.2.2",
     "del": "^3.0.0",
+    "fs": "0.0.1-security",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-csscomb": "^3.0.8",
+    "gulp-dom": "^0.9.17",
     "gulp-eslint": "^4.0.2",
     "gulp-ext-replace": "^0.3.0",
     "gulp-filesize": "0.0.6",
@@ -60,8 +66,10 @@
     "gulp-webpack": "^1.5.0",
     "lodash": "^4.17.5",
     "path": "^0.12.7",
+    "request": "^2.85.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
-    "vinyl-buffer": "^1.0.1"
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
     "jquery": "2.1.1",
