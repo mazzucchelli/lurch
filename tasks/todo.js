@@ -1,20 +1,24 @@
+// FIXME update with `gulp-load-plugins`
 const configs               = require('../gulpconfigs.js');
 const _                     = require('lodash');
 const chalk                 = require('chalk');
 const gulp                  = require('gulp');
+const path                  = require('path');
 const $                     = require('gulp-load-plugins')();
-
-// FIXME update with `gulp-load-plugins`
 const todo                  = require('gulp-todo');
 
 let issuesJson; // update todo list here
 
+var watchPath = [];
+configs.todowatch.forEach(function (v) {
+    watchPath.push(path.join(__dirname, '..', v));
+});
+
+
 var todoTask = {
     compileTodo: function () {
-        // TODO Dynamic `gulp.src` from gulp settings
-        return gulp.src([configs.paths.dev.base + '*.{html|njk}', configs.paths.dev.base + 'js/**/*.js', configs.paths.dev.base + 'scss/**/*.scss', './tasks/*.js'], {
-                base: './'
-            })
+        console.log('watchPath', watchPath);
+        return gulp.src(watchPath, {base: './'})
             .pipe(todo())
             .pipe(gulp.dest('./app/'))
             
