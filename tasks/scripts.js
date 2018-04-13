@@ -51,11 +51,11 @@ var compileScripts = {
                 // console.log();
             });
     },
-    // TODO Lint and autofix javascript
     lintJs: function() {
         return gulp.src(configs.paths.dev.js + '**/*.js')
             .pipe(eslint({
-                fix: true,
+                // TODO Explore autofix function
+                // fix: true,
                 // TODO Explore eslint configuration
                 configFile: configs.paths.dev.js + 'eslint.json'
             }))
