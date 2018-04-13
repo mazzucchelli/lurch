@@ -30,7 +30,7 @@ var compileSprite = {
                         dest: './',
                         prefix: '.svg--%s',
                         sprite: 'sprite.svg',
-                        example: true
+                        example: example
                     }
                 }
             }))

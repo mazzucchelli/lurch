@@ -14,22 +14,11 @@ const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
 
-// TODO: clean task | global and for every ext files
-
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
 
 // npm run compile:scss || NODE_ENV='prod' gulp build:scss
 gulp.task('styles', gulp.series(stylesTask.lintScss, stylesTask.compileScss));
-
-// npm run enchant:scss
-gulp.task('beautifyScss', stylesTask.beautifyScss);
-
-// npm run lint:scss
-gulp.task('scssLint', stylesTask.lintScss);
-
-// npm run enchant:media
-gulp.task('images', imagesTask.minifyImg);
 
 // npm run compile:html
 gulp.task('html', htmlTask.compileHtml);
@@ -40,20 +29,31 @@ gulp.task('vendor', vendorTask.compileVendors);
 // npm run compile:js || NODE_ENV='prod' gulp build:js
 gulp.task('scripts', scriptsTask.compileJs);
 
-// npm run lint:js
-gulp.task('jsLint', scriptsTask.lintJs);
-
 // npm run compile:sprite
 gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
-
-// npm run enchant:svg
-gulp.task('svgmin', spriteTask.minifySvg);
 
 // npm run compile:fonts
 gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
 
 // npm run compile:todo
 gulp.task('todo', todoTask.compileTodo);
+
+// npm run enchant:media
+gulp.task('imgmin', imagesTask.minifyImg);
+
+// npm run enchant:svg
+gulp.task('svgmin', spriteTask.minifySvg);
+
+// npm run enchant:scss
+gulp.task('beautifyScss', stylesTask.beautifyScss);
+
+// npm run lint:scss
+gulp.task('scssLint', stylesTask.lintScss);
+
+// npm run lint:js -- just a test 
+gulp.task('jsLint', scriptsTask.lintJs);
+
+
 
 // npm run start
 let tasksRunning = false;
@@ -127,3 +127,5 @@ gulp.task('default', () => {
         }
     });
 });
+
+// TODO: clean task | global and for every ext files
