@@ -1,4 +1,3 @@
-// TODO Get folder values from env variables 
 const dev = './dev/';
 const app = './app/';
 const build = './build/';
@@ -14,14 +13,23 @@ module.exports = {
             scss: dev + 'scss/',
             images: dev + 'images/',
             svg: dev + 'svg/',
-            fonts: dev + 'fonts/',
-            tempfonts: './fontdest/'
+            fonts: {
+                filesource: dev + 'fonts/',
+                tempdest: './fontdest/',
+                scssdest: dev + 'scss/settings/',
+                scssname: '_fonts.scss',
+                urlReplace: {
+                    from: 'url("',
+                    to: 'url("fonts/',
+                }
+            }
         },
         dest: {
             base: dest,
             scripts: dest + 'scripts/',
             styles: dest + 'styles/',
-            media: dest + 'media/'
+            media: dest + 'media/',
+            fonts: dest + 'styles/fonts/'
         },
         vendors: [
             pkg + 'jquery/dist/jquery.min.js',

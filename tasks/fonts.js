@@ -10,27 +10,30 @@ const ext_replace           = require('gulp-ext-replace');
 
 var fontsTask = {
     generateFonts: function() {
-        return gulp.src(configs.paths.dev.fonts + '**/*.{ttf,otf}')
+        return gulp.src(configs.paths.dev.fonts.filesource + '**/*.{ttf,otf}')
             .pipe(fontgen({
-                dest: "./fontdest/"
+                dest: configs.paths.dev.fonts.tempdest
             }));
     },
     fixFontsPath: function() {
-        return gulp.src(configs.paths.dev.tempfonts + '*.css')
-            .pipe(replace('url("', 'url("fonts/'))
-            .pipe(gulp.dest(configs.paths.dev.tempfonts))
+        return gulp.src(configs.paths.dev.fonts.tempdest + '*.css')
+            .pipe(replace(
+                configs.paths.dev.fonts.urlReplace.from, 
+                configs.paths.dev.fonts.urlReplace.to
+            ))
+            .pipe(gulp.dest(configs.paths.dev.fonts.tempdest))
     },
     generateFontsScss: function() {
-        return gulp.src(configs.paths.dev.tempfonts + '*.css')
-            .pipe(concat('all.js'))
-            .pipe(rename("_fonts.scss"))
-            .pipe(gulp.dest(configs.paths.dev.scss + 'fonts/'))
+        return gulp.src(configs.paths.dev.fonts.tempdest + '*.css')
+            .pipe(concat('all.css'))
+            .pipe(rename(configs.paths.dev.fonts.scssname))
+            .pipe(gulp.dest(configs.paths.dev.fonts.scssdest))
     },
     moveFontFiles: function() {
-        return gulp.src(configs.paths.dev.tempfonts + '*.{eot,svg,ttf,woff,woff2}')
-            .pipe(gulp.dest(configs.paths.dest.styles + 'fonts/'))
+        return gulp.src(configs.paths.dev.fonts.tempdest + '*.{eot,svg,ttf,woff,woff2}')
+            .pipe(gulp.dest(configs.paths.dest.fonts))
             .on('finish', () => {
-                del(configs.paths.dev.tempfonts + '**');
+                del(configs.paths.dev.fonts.tempdest + '**');
             });
     }
 }
