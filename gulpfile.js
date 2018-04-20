@@ -13,6 +13,7 @@ const vendorTask            = require('./tasks/vendor');
 const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
+const docsTask              = require('./tasks/docs');
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
@@ -52,6 +53,9 @@ gulp.task('scssLint', stylesTask.lintScss);
 
 // npm run lint:js -- just a test 
 gulp.task('jsLint', scriptsTask.lintJs);
+
+// npm run docs
+gulp.task('scssDocs', docsTask.generateSassDocs);
 
 // npm run start
 let tasksRunning = false;

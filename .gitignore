@@ -33,6 +33,7 @@ bower_components
 
 app
 build
+fedocs
 
 # - - -
 # IDE Generated Files & Folders
@@ -63,19 +64,6 @@ build
 
 *.DS_Store
 *__MACOSX
-
-# - - -
-# Upload credentials
-# - - -
-
-dw.json
-dw.configs.json
-
-# - - -
-# gulp settings
-# - - -
-
-gulpsettings.js
 
 # - - -
 # Others

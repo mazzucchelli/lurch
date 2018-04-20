@@ -25,7 +25,8 @@
     "lint:scss": "gulp scssLint",
     "lint:js": "gulp jsLint",
     "todo": "gulp todo",
-    "compile:uikit": "node tasks/sherpa.js"
+    "compile:uikit": "node tasks/sherpa.js",
+    "scssdocs": "gulp scssDocs"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -61,6 +62,7 @@
     "gulp-webpack": "^1.5.0",
     "lodash": "^4.17.5",
     "path": "^0.12.7",
+    "sassdoc": "^2.5.0",
     "style-sherpa": "^1.0.2",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "vinyl-buffer": "^1.0.1"

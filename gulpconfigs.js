@@ -42,6 +42,10 @@ module.exports = {
         "uikit", 
         "widgets"
     ],
+    sassdoc: {
+        src: './node_modules/foundation-sites/scss/**/*.scss',
+        dest: './fedocs/styles/'
+    },
     todowatch: [
         dev + '*.{html|njk}',
         dev + 'js/**/*.js',
