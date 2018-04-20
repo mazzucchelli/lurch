@@ -5,7 +5,6 @@ const chalk                 = require('chalk');
 const gulp                  = require('gulp');
 const path                  = require('path');
 const $                     = require('gulp-load-plugins')();
-const todo                  = require('gulp-todo');
 
 let issuesJson; // update todo list here
 
@@ -19,7 +18,7 @@ var todoTask = {
     compileTodo: function () {
         console.log('watchPath', watchPath);
         return gulp.src(watchPath, {base: './'})
-            .pipe(todo())
+            .pipe($.todo())
             .pipe(gulp.dest('./app/'))
             
             // TODO Generate html

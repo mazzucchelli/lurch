@@ -2,7 +2,6 @@ const configs               = require('../gulpconfigs.js');
 const gulp                  = require('gulp');
 const $                     = require('gulp-load-plugins')();
 const sassdoc               = require('sassdoc');
-const jsdoc                 = require('gulp-jsdoc3');
 
 var compileDocs = {
     generateSassDocs: function() {
@@ -13,7 +12,7 @@ var compileDocs = {
     },
     generateJsDocs: function() {
         return gulp.src('./node_modules/foundation-sites/js/**/*.js', {read: false})
-            .pipe(jsdoc());
+            .pipe($.jsdoc3());
     }
 }
 

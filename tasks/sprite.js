@@ -1,7 +1,6 @@
 const configs               = require('../gulpconfigs.js');
 const buffer                = require('vinyl-buffer');
 const gulp                  = require('gulp');
-const svgmin                = require('gulp-svgmin');
 const gulpLoadPlugins       = require('gulp-load-plugins');
 
 const $ = gulpLoadPlugins({
@@ -38,7 +37,7 @@ var compileSprite = {
     },
     minifySvg: function () {
         return gulp.src(configs.paths.dev.svg + '*.svg')
-            .pipe(svgmin({
+            .pipe($.svgmin({
                 js2svg: {
                     pretty: true
                 }

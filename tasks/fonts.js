@@ -1,23 +1,18 @@
 const configs               = require('../gulpconfigs.js');
 const gulp                  = require('gulp');
-const fontgen               = require('gulp-fontgen');
 const $                     = require('gulp-load-plugins')();
 const del                   = require("del");
-const replace               = require('gulp-replace');
-const rename                = require('gulp-rename');
-const concat                = require('gulp-concat');
-const ext_replace           = require('gulp-ext-replace');
 
 var fontsTask = {
     generateFonts: function() {
         return gulp.src(configs.paths.dev.fonts.filesource + '**/*.{ttf,otf}')
-            .pipe(fontgen({
+            .pipe($.fontgen({
                 dest: configs.paths.dev.fonts.tempdest
             }));
     },
     fixFontsPath: function() {
         return gulp.src(configs.paths.dev.fonts.tempdest + '*.css')
-            .pipe(replace(
+            .pipe($.replace(
                 configs.paths.dev.fonts.urlReplace.from, 
                 configs.paths.dev.fonts.urlReplace.to
             ))
@@ -25,8 +20,8 @@ var fontsTask = {
     },
     generateFontsScss: function() {
         return gulp.src(configs.paths.dev.fonts.tempdest + '*.css')
-            .pipe(concat('all.css'))
-            .pipe(rename(configs.paths.dev.fonts.scssname))
+            .pipe($.concat('all.css'))
+            .pipe($.rename(configs.paths.dev.fonts.scssname))
             .pipe(gulp.dest(configs.paths.dev.fonts.scssdest))
     },
     moveFontFiles: function() {

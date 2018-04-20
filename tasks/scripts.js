@@ -3,7 +3,6 @@ const gulp                  = require('gulp');
 const path                  = require('path');
 const UglifyJSPlugin        = require('uglifyjs-webpack-plugin');
 const $                     = require('gulp-load-plugins')();
-const eslint                = require('gulp-eslint');
 
 let entries = {};
 let filesArray = [];
@@ -53,7 +52,7 @@ var compileScripts = {
     },
     lintJs: function() {
         return gulp.src(configs.paths.dev.js + '**/*.js')
-            .pipe(eslint({
+            .pipe($.eslint({
                 // TODO Explore autofix function
                 // fix: true,
                 // TODO Explore eslint configuration
@@ -61,7 +60,7 @@ var compileScripts = {
             }))
             // eslint.format() outputs the lint results to the console.
             // Alternatively use eslint.formatEach() (see Docs).
-            .pipe(eslint.format())
+            .pipe($.eslint.format())
     }
 }
 

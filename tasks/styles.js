@@ -1,9 +1,7 @@
 const configs               = require('../gulpconfigs.js');
-const buffer                = require('vinyl-buffer');
 const chalk                 = require('chalk');
 const gulp                  = require('gulp');
 const gulpLoadPlugins       = require('gulp-load-plugins');
-const gulpif                = require('gulp-if');
 
 const $ = gulpLoadPlugins({
     rename: {
@@ -33,7 +31,7 @@ var compileStyles = {
     compileScss: function () {
         const toSourceMaps = process.env.NODE_ENV !== 'prod';
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
-            .pipe(gulpif(toSourceMaps, $.sourcemaps.init()))
+            .pipe($.if(toSourceMaps, $.sourcemaps.init()))
             .pipe($.sass())
             .pipe($.autoprefixer({
                 browsers: [
@@ -45,11 +43,8 @@ var compileStyles = {
                 grid: false
             }))
             .pipe($.cleancss())
-            .pipe(gulpif(toSourceMaps, $.sourcemaps.write('.')))
+            .pipe($.if(toSourceMaps, $.sourcemaps.write('.')))
             .pipe(gulp.dest(configs.paths.dest.styles))
-            .on('finish', () => {
-                // console.log();
-            });
     },
     beautifyScss: function () {
         return gulp.src(configs.paths.dev.scss + '**/*.scss', {base: './'})
@@ -57,6 +52,7 @@ var compileStyles = {
         .pipe(gulp.dest('./'))
     },
     lintScss: function () {
+        // @FIXME create `reports` folder if it doesn't exists 
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
             .pipe($.scsslint({
                 'reporterOutput': './reports/scssReport.json',
