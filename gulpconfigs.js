@@ -29,6 +29,7 @@ module.exports = {
             scripts: dest + 'scripts/',
             styles: dest + 'styles/',
             media: dest + 'media/',
+            uikit: dest + 'uikit/',
             fonts: dest + 'styles/fonts/'
         },
         vendors: [
@@ -37,6 +38,10 @@ module.exports = {
             pkg + 'foundation-sites/dist/js/foundation.min.js'
         ]
     },
+    uikit: [
+        "uikit", 
+        "widgets"
+    ],
     todowatch: [
         dev + '*.{html|njk}',
         dev + 'js/**/*.js',
