@@ -44,7 +44,7 @@ module.exports = {
     ],
     sassdoc: {
         src: './node_modules/foundation-sites/scss/**/*.scss',
-        dest: './fedocs/styles/'
+        dest: './docs/styles/'
     },
     todowatch: [
         dev + '*.{html|njk}',

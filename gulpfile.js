@@ -55,7 +55,13 @@ gulp.task('scssLint', stylesTask.lintScss);
 gulp.task('jsLint', scriptsTask.lintJs);
 
 // npm run docs
+gulp.task('docs', gulp.series(docsTask.generateSassDocs, docsTask.generateJsDocs));
+
+// npm run docs:scss
 gulp.task('scssDocs', docsTask.generateSassDocs);
+
+// npm run docs:js
+gulp.task('jsDocs', docsTask.generateJsDocs);
 
 // npm run start
 let tasksRunning = false;
