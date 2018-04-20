@@ -33,8 +33,8 @@ module.exports = {
         },
         vendors: [
             pkg + 'jquery/dist/jquery.min.js',
-            pkg + 'svg4everybody/dist/svg4everybody.min.js',
-            pkg + 'picturefill/dist/picturefill.min.js'
+            pkg + 'what-input/dist/what-input.min.js',
+            pkg + 'foundation-sites/dist/js/foundation.min.js'
         ]
     },
     todowatch: [

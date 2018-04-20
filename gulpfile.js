@@ -1,6 +1,6 @@
 const configs               = require('./gulpconfigs.js');
-const settings              = require('./gulpsettings.js');
 const gulp                  = require('gulp');
+const fs                    = require('fs');
 const path                  = require('path');
 const chalk                 = require('chalk');
 const gulpLoadPlugins       = require('gulp-load-plugins');
@@ -53,14 +53,12 @@ gulp.task('scssLint', stylesTask.lintScss);
 // npm run lint:js -- just a test 
 gulp.task('jsLint', scriptsTask.lintJs);
 
-
-
 // npm run start
 let tasksRunning = false;
 gulp.task('default', () => {
     
     console.log('\x1Bc');
-    console.log(chalk.bold('Watching files in ' + configs.dev + ' folder'));
+    console.log(chalk.bold('Watching files in ' + configs.paths.dev.base + ' folder'));
 
     let tasks = [];
     let images = [];
@@ -72,14 +70,14 @@ gulp.task('default', () => {
         tasksRunning = true;
         const ext =  path.extname(location);
 
-        if (['.jpg','.png','.gif'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('images') === -1) {
+        if (['.jpg','.png','.gif'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('imgmin') === -1) {
             if (event === 'unlink') {
                 // delete image from the dist folder
-                const delImgPath = settings.paths.destination.images + location.replace(settings.paths.source.images, '');
+                const delImgPath = configs.paths.dest.media + location.replace(configs.paths.dev.images, '');
                 if (fs.existsSync(delImgPath)) fs.unlinkSync(delImgPath);
             } else {
                 images.push(location);
-                tasks.push('images')
+                tasks.push('imgmin')
             }
         }
 

@@ -1,7 +1,7 @@
 {
-  "name": "mimir",
+  "name": "tboe",
   "version": "1.0.0",
-  "description": "mimir",
+  "description": "The beginning of everything",
   "author": "mmazzucchelli <mazzucchelli.wrk@gmail.com>",
   "scripts": {
     "start": "gulp",
@@ -64,9 +64,6 @@
     "vinyl-buffer": "^1.0.1"
   },
   "dependencies": {
-    "jquery": "2.1.1",
-    "picturefill": "3.0.2",
-    "slick-carousel": "1.7.1",
-    "svg4everybody": "2.1.9"
+    "foundation-sites": "^6.4.3"
   }
 }
