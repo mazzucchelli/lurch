@@ -14,16 +14,17 @@ function scssCustomReporter(file) {
     let issueLength = file.scsslint.issues.length;
     console.logissueLength
     if (!file.scsslint.success) {
-        console.log(chalk.bold( '\n- ' + issueLength + ' issues found in: ' + cleanPath + '\n'));
-        file.scsslint.issues.forEach(function(issue, index)  {
-            if ( issue.severity == 'error') {
-                console.log(chalk.red('    🔴   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
-                (index == issueLength - 1) ? console.log(' ') : ''
-            } else if ( issue.severity == 'warning' ) {
-                console.log(chalk.yellow('    🔶   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
-                (index == issueLength - 1) ? console.log(' ') : ''
-            }
-        })
+        // console.log(chalk.bold( '\n- ' + issueLength + ' issues found in: ' + cleanPath + '\n'));
+        // file.scsslint.issues.forEach(function(issue, index)  {
+        //     if ( issue.severity == 'error') {
+        //         console.log(chalk.red('    🔴   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
+        //         (index == issueLength - 1) ? console.log(' ') : ''
+        //     } else if ( issue.severity == 'warning' ) {
+        //         console.log(chalk.yellow('    🔶   ' + issue.reason + ' at line: ' + issue.line + ', col: ' + issue.column));
+        //         (index == issueLength - 1) ? console.log(' ') : ''
+        //     }
+        // })
+        console.log('file.scsslint.issues', file.scsslint.issues);
     }
 };
 
@@ -52,7 +53,7 @@ var compileStyles = {
         .pipe(gulp.dest('./'))
     },
     lintScss: function () {
-        // @FIXME create `reports` folder if it doesn't exists 
+        // @FIXME: create `reports` folder if it doesn't exists 
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
             .pipe($.scsslint({
                 'reporterOutput': './reports/scssReport.json',

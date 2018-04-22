@@ -53,10 +53,10 @@ var compileScripts = {
     lintJs: function() {
         return gulp.src(configs.paths.dev.js + '**/*.js')
             .pipe($.eslint({
-                // TODO Explore autofix function
+                // TODO: Explore autofix function
                 // fix: true,
-                // TODO Explore eslint configuration
-                configFile: configs.paths.dev.js + 'eslint.json'
+                // TODO: Explore eslint configuration
+                configFile: configs.paths.dev.js + '.eslintrc.json'
             }))
             // eslint.format() outputs the lint results to the console.
             // Alternatively use eslint.formatEach() (see Docs).

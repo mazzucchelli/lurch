@@ -34,8 +34,8 @@ module.exports = {
         },
         vendors: [
             pkg + 'jquery/dist/jquery.min.js',
-            pkg + 'what-input/dist/what-input.min.js',
-            pkg + 'foundation-sites/dist/js/foundation.min.js'
+            pkg + 'foundation-sites/dist/js/foundation.min.js',
+            pkg + 'what-input/dist/what-input.min.js'
         ]
     },
     uikit: [
@@ -50,11 +50,21 @@ module.exports = {
         dev + '*.{html|njk}',
         dev + 'js/**/*.js',
         dev + 'scss/**/*.scss',
-        'tasks/*.js'
+        './tasks/*.js',
+        './gulpfile.js',
+        './gulpconfigs.js'
     ],
     webpack: {
         entries: [
             'main.js'
+        ]
+    },
+    alfred: {
+        filesize: [
+            dest + 'styles/style.css', 
+            dest + 'scripts/main.min.js', 
+            dest + 'scripts/vendor.min.js',
+            dest + 'media/sprite.svg'
         ]
     }
 }

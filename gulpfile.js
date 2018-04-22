@@ -14,44 +14,54 @@ const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
 const docsTask              = require('./tasks/docs');
+const lurchTask             = require('./tasks/alfred'); // todo rename alfred in lurch
+
+// FIXME: standalone version of Lurch
+const updateLurch = function() {
+    return gulp.series(lurchTask.getScssReport, lurchTask.getTodoReport, lurchTask.compileDashboard)
+}
+gulp.task('lurchtest', lurchTask.getJsReport);
+
+// npm run lurch
+gulp.task('lurch', updateLurch());
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
 
 // npm run compile:scss || NODE_ENV='prod' gulp build:scss
-gulp.task('styles', gulp.series(stylesTask.lintScss, stylesTask.compileScss));
+gulp.task('styles', gulp.parallel(stylesTask.compileScss));
 
 // npm run compile:html
-gulp.task('html', htmlTask.compileHtml);
+gulp.task('html', gulp.parallel(htmlTask.compileHtml, updateLurch()));
 
 // npm run compile:vendor
-gulp.task('vendor', vendorTask.compileVendors);
+gulp.task('vendor', gulp.parallel(vendorTask.compileVendors, updateLurch()));
 
 // npm run compile:js || NODE_ENV='prod' gulp build:js
-gulp.task('scripts', scriptsTask.compileJs);
+gulp.task('scripts', gulp.parallel(scriptsTask.compileJs, updateLurch()));
 
 // npm run compile:sprite
-gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
+gulp.task('icons', gulp.parallel(gulp.series(spriteTask.minifySvg, spriteTask.compileSvg), updateLurch()));
 
 // npm run compile:fonts
 gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
 
-// npm run compile:todo
+// npm run compile:todo ~~ Deprecated
 gulp.task('todo', todoTask.compileTodo);
 
 // npm run enchant:media
 gulp.task('imgmin', imagesTask.minifyImg);
 
 // npm run enchant:svg
-gulp.task('svgmin', spriteTask.minifySvg);
+gulp.task('svgmin', gulp.parallel(spriteTask.minifySvg, updateLurch()));
 
 // npm run enchant:scss
-gulp.task('beautifyScss', stylesTask.beautifyScss);
+gulp.task('beautifyScss', gulp.parallel(stylesTask.beautifyScss, updateLurch()));
 
-// npm run lint:scss
+// npm run lint:scss ~~ Deprecated
 gulp.task('scssLint', stylesTask.lintScss);
 
-// npm run lint:js -- just a test 
+// npm run lint:js ~~ Deprecated
 gulp.task('jsLint', scriptsTask.lintJs);
 
 // npm run docs
@@ -103,7 +113,7 @@ gulp.task('default', () => {
             tasks.push('scripts')
         }
 
-        else if (['.html', '.njk'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('html') === -1) {
+        else if (['.html', '.njk'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('alfred') === -1) {
             tasks.push('html')
         }
 
@@ -137,3 +147,4 @@ gulp.task('default', () => {
 });
 
 // TODO: clean task | global and for every ext files
+// TODO: add iconfont task
