@@ -12,31 +12,11 @@ const $ = gulpLoadPlugins({
     }
 });
 
-function getData(path) {
-    return require(path);
-}
-
-function generateReport(filename, string) {
-    const src = require('stream').Readable({ objectMode: true })
-    src._read = function () {
-        this.push(new Vinyl({
-            cwd: '/',
-            base: './',
-            path: filename,
-            contents: new Buffer(string)
-          }))
-        this.push(null)
-    }
-    return src
-}
-
-function getReport(filename, string) {
-    return generateReport(filename, string)
-        .pipe(gulp.dest('reports/'))
-}
+// store reports here
+let scssReport, sizeReport, jsReport, todoReport;
 
 // get files for todo reporter
-var watchPath = [];
+let watchPath = [];
 configs.todowatch.forEach(function (v) {
     watchPath.push(path.join(__dirname, '..', v));
 });
@@ -45,18 +25,15 @@ configs.todowatch.forEach(function (v) {
 let files = [];
 
 // variables used in scss reporter
-let tempIssues = [];
-let tempIssue = {};
-let tempInfo = [];
+let scssIssues = [];
+let scssTempIssue = {};
+let scssTempInfo = [];
 
 let jsIssues = [];
 let jsTempIssue = {};
 let jsTempInfo = [];
 
-var compileLurch = {
-    test: function() {
-        return getReport('test', 'test');
-    },
+const compileLurch = {
     getJsReport: function() {
         let jsonPath = '';
         return gulp.src(configs.paths.dev.js + '**/*.js')
@@ -79,10 +56,9 @@ var compileLurch = {
                 jsTempInfo = [];
                 jsTempIssue = {};
             }))
-            .pipe(getReport('test.json', 'Just a test!'))
             .on('end', () => {
-                // console.log('jsIssues', jsIssues);
-                // fs.writeFile('./reports/jsReport.json', JSON.stringify(jsIssues), function() {return});
+                jsReport = '';
+                jsReport = jsIssues;
             });
     },
     getTodoReport: function () {
@@ -91,7 +67,11 @@ var compileLurch = {
                 fileName: 'todosReport.json',
                 reporter: 'json'
             }))
-            .pipe(gulp.dest('./reports/'))
+            .pipe(gulp.dest('../reports/'))
+            .on('end', () => {
+                // console.log('jsIssues', JSON.stringify(jsIssues));
+                // fs.writeFile('../reports/jsReport.json', jsIssues, 'utf8', function() {return});
+            });
     },
     getFilesizeReport: function() {
         // return;
@@ -99,11 +79,11 @@ var compileLurch = {
     getScssReport: function() {
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
             .pipe($.scsslint({
-                'reporterOutput': './reports/scssReport.json',
+                'reporterOutput': '../reports/scssReport.json',
                 customReport: function scssCustomReporter(file) {
                     if (!file.scsslint.success) {
                         file.scsslint.issues.forEach(function(issue) {
-                            tempInfo.push({
+                            scssTempInfo.push({
                                 line: issue.line,
                                 column: issue.column,
                                 length: issue.length,
@@ -113,35 +93,37 @@ var compileLurch = {
                             });
                         })
                         let currentFile = file.history.toString().substring(file.history.toString().indexOf('scss') + 4);
-                        tempIssue.path = currentFile;
-                        tempIssue.info = tempInfo;
-                        tempIssues.push(tempIssue);
+                        scssTempIssue.path = currentFile;
+                        scssTempIssue.info = scssTempInfo;
+                        scssIssues.push(scssTempIssue);
                     }
-                    tempIssue = {};
-                    tempInfo = [];
+                    scssTempIssue = {};
+                    scssTempInfo = [];
                 }
             })).on('end', () => {
-                fs.writeFile('./reports/stylesReport.json', JSON.stringify(tempIssues), function() {return});
+                // console.log('jsIssues', JSON.stringify(scssIssues));
+                // fs.writeFile('../reports/stylesReport.json', scssIssues, 'utf8', function() {return});
+                scssReport = '';
+                scssReport = scssIssues;
             });
     },
     compileDashboard: function() {
-        let scssReport = "",
-            sizeReport = "",
-            jsReport = "",
-            todoReport = "";
-
-        scssReport = getData('../reports/stylesReport.json'),
-        sizeReport = getData('../reports/sizesReport.json'),
-        jsReport = getData('../reports/jsReport.json'),
-        todoReport = _.groupBy(getData('../reports/todosReport.json'), function(t){return t.kind});
+        // let scssReport = require('../reports/stylesReport.json'),
+            // sizeReport = require('../reports/sizesReport.json'),
+            // jsReport = require('../reports/jsReport.json'),
+            // todoReport = _.groupBy(require('../reports/todosReport.json'), function(t){return t.kind});
         
         return gulp.src(configs.paths.dev.base + '*.{html,njk}')
             .pipe($.data(() => ({scssReport: scssReport})))
-            .pipe($.data(() => ({sizeReport: sizeReport})))
+            // .pipe($.data(() => ({sizeReport: sizeReport})))
             .pipe($.data(() => ({jsReport: jsReport})))
-            .pipe($.data(() => ({todoReport: todoReport})))
+            // .pipe($.data(() => ({todoReport: todoReport})))
             .pipe($.nunjucks.compile())
             .pipe(gulp.dest(configs.paths.dest.base))
+            .on('end', function(){
+                scssIssues = []; 
+                jsIssues = [];                
+            })
     }
 }
 

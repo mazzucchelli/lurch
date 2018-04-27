@@ -1,7 +1,7 @@
 {
-  "name": "tboe",
+  "name": "lurch",
   "version": "1.0.0",
-  "description": "The beginning of everything",
+  "description": "A pack of gulp tasks",
   "author": "mmazzucchelli <mazzucchelli.wrk@gmail.com>",
   "scripts": {
     "start": "gulp",
@@ -29,7 +29,7 @@
     "docs": "gulp docs",
     "docs:scss": "gulp scssDocs",
     "docs:js": "gulp jsDocs",
-    "lurch": "gulp lurch"
+    "lurch": "gulp dashboard"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

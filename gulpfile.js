@@ -16,32 +16,27 @@ const todoTask              = require('./tasks/todo');
 const docsTask              = require('./tasks/docs');
 const lurchTask             = require('./tasks/alfred'); // todo rename alfred in lurch
 
-// FIXME: standalone version of Lurch
-const updateLurch = function() {
-    return gulp.series(lurchTask.getScssReport, lurchTask.getTodoReport, lurchTask.compileDashboard)
-}
-gulp.task('lurchtest', lurchTask.getJsReport);
-
 // npm run lurch
-gulp.task('lurch', updateLurch());
+gulp.task('dashboard', gulp.series(lurchTask.getJsReport, lurchTask.getTodoReport, lurchTask.getScssReport, lurchTask.compileDashboard));
+// gulp.task('lurchsize', lurchTask.getFilesizeReport);
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
 
 // npm run compile:scss || NODE_ENV='prod' gulp build:scss
-gulp.task('styles', gulp.parallel(stylesTask.compileScss));
+gulp.task('styles', gulp.series(stylesTask.compileScss, lurchTask.getScssReport, lurchTask.compileDashboard));
 
 // npm run compile:html
-gulp.task('html', gulp.parallel(htmlTask.compileHtml, updateLurch()));
+gulp.task('html', htmlTask.compileHtml);
 
 // npm run compile:vendor
-gulp.task('vendor', gulp.parallel(vendorTask.compileVendors, updateLurch()));
+gulp.task('vendor', vendorTask.compileVendors);
 
 // npm run compile:js || NODE_ENV='prod' gulp build:js
-gulp.task('scripts', gulp.parallel(scriptsTask.compileJs, updateLurch()));
+gulp.task('scripts', gulp.series(scriptsTask.compileJs,  lurchTask.getJsReport, lurchTask.compileDashboard));
 
 // npm run compile:sprite
-gulp.task('icons', gulp.parallel(gulp.series(spriteTask.minifySvg, spriteTask.compileSvg), updateLurch()));
+gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
 
 // npm run compile:fonts
 gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
@@ -53,10 +48,10 @@ gulp.task('todo', todoTask.compileTodo);
 gulp.task('imgmin', imagesTask.minifyImg);
 
 // npm run enchant:svg
-gulp.task('svgmin', gulp.parallel(spriteTask.minifySvg, updateLurch()));
+gulp.task('svgmin', spriteTask.minifySvg);
 
 // npm run enchant:scss
-gulp.task('beautifyScss', gulp.parallel(stylesTask.beautifyScss, updateLurch()));
+gulp.task('beautifyScss', stylesTask.beautifyScss);
 
 // npm run lint:scss ~~ Deprecated
 gulp.task('scssLint', stylesTask.lintScss);
@@ -77,7 +72,7 @@ gulp.task('jsDocs', docsTask.generateJsDocs);
 let tasksRunning = false;
 gulp.task('default', () => {
     
-    console.log('\x1Bc');
+    // console.log('\x1Bc');
     console.log(chalk.bold('Watching files in ' + configs.paths.dev.base + ' folder'));
 
     let tasks = [];
@@ -113,7 +108,7 @@ gulp.task('default', () => {
             tasks.push('scripts')
         }
 
-        else if (['.html', '.njk'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('alfred') === -1) {
+        else if (['.html', '.njk'].indexOf(ext.toLowerCase()) > -1 && tasks.indexOf('html') === -1) {
             tasks.push('html')
         }
 
@@ -127,7 +122,7 @@ gulp.task('default', () => {
         }
 
         if (tasks.length) {
-            console.log('\x1Bc');
+            // console.log('\x1Bc');
             tasksDebounce = setTimeout(() => {
                 gulp.task('run', gulp.series(...tasks, () => {
                     console.log(chalk.bold('\n--- \n'));
