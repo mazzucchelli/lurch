@@ -1,4 +1,4 @@
-const accordionIssues = new Foundation.Accordion( $('.js-accordion') ); // eslint-disable-line no-unused-vars
+const accordionIssues = new Foundation.Accordion($('.js-accordion')); // eslint-disable-line no-unused-vars
 
 const getScrollbarWidth = () => {
     'use strict'

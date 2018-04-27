@@ -13,16 +13,19 @@ const $ = gulpLoadPlugins({
 });
 
 // store reports here
-let scssReport, sizeReport, jsReport, todoReport;
+let scssReport, sizeReport, jsReport, tdReport;
 
 // get files for todo reporter
-let watchPath = [];
+let watchTodoPath = [];
 configs.todowatch.forEach(function (v) {
-    watchPath.push(path.join(__dirname, '..', v));
+    watchTodoPath.push(path.join(__dirname, '..', v));
 });
 
-// get files for filesize reporter
-let files = [];
+// get files for todo reporter
+let watchFilesizePath = [];
+configs.todowatch.forEach(function (v) {
+    watchFilesizePath.push(path.join(__dirname, '..', v));
+});
 
 // variables used in scss reporter
 let scssIssues = [];
@@ -62,15 +65,13 @@ const compileLurch = {
             });
     },
     getTodoReport: function () {
-        return gulp.src(watchPath, {base: './'})
-            .pipe($.todo({
-                fileName: 'todosReport.json',
-                reporter: 'json'
-            }))
-            .pipe(gulp.dest('../reports/'))
+        // TODO: get full path, not just the file name in 'getTodoReport()'
+        return gulp.src(watchTodoPath)
+            .pipe($.todo())
+            .pipe($.todo.reporter('json', {fileName: 'todo.json'}))
+            .pipe(gulp.dest('./reports/')) 
             .on('end', () => {
-                // console.log('jsIssues', JSON.stringify(jsIssues));
-                // fs.writeFile('../reports/jsReport.json', jsIssues, 'utf8', function() {return});
+                tdReport = _.groupBy(JSON.parse(fs.readFileSync(path.join(__dirname, '../reports', 'todo.json'))), function(t){return t.kind})
             });
     },
     getFilesizeReport: function() {
@@ -101,23 +102,16 @@ const compileLurch = {
                     scssTempInfo = [];
                 }
             })).on('end', () => {
-                // console.log('jsIssues', JSON.stringify(scssIssues));
-                // fs.writeFile('../reports/stylesReport.json', scssIssues, 'utf8', function() {return});
                 scssReport = '';
                 scssReport = scssIssues;
             });
     },
     compileDashboard: function() {
-        // let scssReport = require('../reports/stylesReport.json'),
-            // sizeReport = require('../reports/sizesReport.json'),
-            // jsReport = require('../reports/jsReport.json'),
-            // todoReport = _.groupBy(require('../reports/todosReport.json'), function(t){return t.kind});
-        
         return gulp.src(configs.paths.dev.base + '*.{html,njk}')
             .pipe($.data(() => ({scssReport: scssReport})))
             // .pipe($.data(() => ({sizeReport: sizeReport})))
             .pipe($.data(() => ({jsReport: jsReport})))
-            // .pipe($.data(() => ({todoReport: todoReport})))
+            .pipe($.data(() => ({todoReport: tdReport})))
             .pipe($.nunjucks.compile())
             .pipe(gulp.dest(configs.paths.dest.base))
             .on('end', function(){

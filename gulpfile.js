@@ -18,13 +18,12 @@ const lurchTask             = require('./tasks/alfred'); // todo rename alfred i
 
 // npm run lurch
 gulp.task('dashboard', gulp.series(lurchTask.getJsReport, lurchTask.getTodoReport, lurchTask.getScssReport, lurchTask.compileDashboard));
-// gulp.task('lurchsize', lurchTask.getFilesizeReport);
 
 // npm run compile || NODE_ENV='prod' gulp compile
 gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
 
 // npm run compile:scss || NODE_ENV='prod' gulp build:scss
-gulp.task('styles', gulp.series(stylesTask.compileScss, lurchTask.getScssReport, lurchTask.compileDashboard));
+gulp.task('styles', gulp.series(stylesTask.compileScss, lurchTask.getScssReport, lurchTask.getTodoReport, lurchTask.compileDashboard));
 
 // npm run compile:html
 gulp.task('html', htmlTask.compileHtml);
@@ -33,7 +32,7 @@ gulp.task('html', htmlTask.compileHtml);
 gulp.task('vendor', vendorTask.compileVendors);
 
 // npm run compile:js || NODE_ENV='prod' gulp build:js
-gulp.task('scripts', gulp.series(scriptsTask.compileJs,  lurchTask.getJsReport, lurchTask.compileDashboard));
+gulp.task('scripts', gulp.series(scriptsTask.compileJs, lurchTask.getJsReport, lurchTask.getTodoReport, lurchTask.compileDashboard));
 
 // npm run compile:sprite
 gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));

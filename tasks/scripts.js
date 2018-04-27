@@ -53,7 +53,7 @@ var compileScripts = {
     lintJs: function() {
         return gulp.src(configs.paths.dev.js + '**/*.js')
             .pipe($.eslint({
-                // TODO: Explore autofix function
+                // TODO: Explore autofix function with 'fix: true' prop or use gulp-fixmyjs
                 // fix: true,
                 // TODO: Explore eslint configuration
                 configFile: configs.paths.dev.js + '.eslintrc.json'
