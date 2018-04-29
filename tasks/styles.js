@@ -44,6 +44,7 @@ var compileStyles = {
                 grid: false
             }))
             .pipe($.cleancss())
+            // TODO: Rename style.css to style.min.css in build scripts
             .pipe($.if(toSourceMaps, $.sourcemaps.write('.')))
             .pipe(gulp.dest(configs.paths.dest.styles))
     },
@@ -51,14 +52,6 @@ var compileStyles = {
         return gulp.src(configs.paths.dev.scss + '**/*.scss', {base: './'})
         .pipe($.csscomb())
         .pipe(gulp.dest('./'))
-    },
-    lintScss: function () {
-        // @FIXME: create `reports` folder if it doesn't exists 
-        return gulp.src(configs.paths.dev.scss + '**/*.scss')
-            .pipe($.scsslint({
-                'reporterOutput': './reports/scssReport.json',
-                customReport: scssCustomReporter
-            }))
     }
 }
 

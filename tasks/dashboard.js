@@ -5,6 +5,8 @@ const fs                    = require('fs');
 const _                     = require('underscore-node');
 const gulpLoadPlugins       = require('gulp-load-plugins');
 const Vinyl                 = require('vinyl');
+const each                  = require('gulp-each');
+const prettyBytes           = require('pretty-bytes');
 
 const $ = gulpLoadPlugins({
     rename: {
@@ -23,9 +25,11 @@ configs.todowatch.forEach(function (v) {
 
 // get files for todo reporter
 let watchFilesizePath = [];
-configs.todowatch.forEach(function (v) {
+configs.alfred.filesize.forEach(function (v) {
     watchFilesizePath.push(path.join(__dirname, '..', v));
 });
+let fsValues = [];
+let fsTempValue = {};
 
 // variables used in scss reporter
 let scssIssues = [];
@@ -74,13 +78,25 @@ const compileLurch = {
                 tdReport = _.groupBy(JSON.parse(fs.readFileSync(path.join(__dirname, '../reports', 'todo.json'))), function(t){return t.kind})
             });
     },
+    // FIXME: create fallback obj for getFilesizeReport()
     getFilesizeReport: function() {
-        // return;
+        return gulp.src(watchFilesizePath)
+            .pipe(each(function(content, file, cb) {
+                fsTempValue.path = file.relative;
+                fsTempValue.size = prettyBytes(file.stat.size);
+                fsValues.push(fsTempValue);
+                fsTempValue = {};
+                cb();
+            }))
+            .on('end', () => {
+                sizeReport = '';
+                sizeReport = fsValues;
+            });
     },
     getScssReport: function() {
         return gulp.src(configs.paths.dev.scss + '**/*.scss')
             .pipe($.scsslint({
-                'reporterOutput': '../reports/scssReport.json',
+                // 'reporterOutput': '../reports/scssReport.json',
                 customReport: function scssCustomReporter(file) {
                     if (!file.scsslint.success) {
                         file.scsslint.issues.forEach(function(issue) {
@@ -107,9 +123,9 @@ const compileLurch = {
             });
     },
     compileDashboard: function() {
-        return gulp.src(configs.paths.dev.base + '*.{html,njk}')
+        return gulp.src(configs.paths.dev.base + 'dashboard.{html,njk}')
             .pipe($.data(() => ({scssReport: scssReport})))
-            // .pipe($.data(() => ({sizeReport: sizeReport})))
+            .pipe($.data(() => ({sizeReport: sizeReport})))
             .pipe($.data(() => ({jsReport: jsReport})))
             .pipe($.data(() => ({todoReport: tdReport})))
             .pipe($.nunjucks.compile())

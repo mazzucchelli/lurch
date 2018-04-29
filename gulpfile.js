@@ -14,64 +14,122 @@ const spriteTask            = require('./tasks/sprite');
 const fontsTask             = require('./tasks/fonts');
 const todoTask              = require('./tasks/todo');
 const docsTask              = require('./tasks/docs');
-const lurchTask             = require('./tasks/alfred'); // todo rename alfred in lurch
+const dashboardTask         = require('./tasks/dashboard');
 
-// npm run lurch
-gulp.task('dashboard', gulp.series(lurchTask.getJsReport, lurchTask.getTodoReport, lurchTask.getScssReport, lurchTask.compileDashboard));
+// $ npm run lurch
+gulp.task('dashboard', gulp.series(
+    dashboardTask.getJsReport, 
+    dashboardTask.getTodoReport, 
+    dashboardTask.getScssReport, 
+    dashboardTask.getFilesizeReport, 
+    dashboardTask.compileDashboard
+));
 
-// npm run compile || NODE_ENV='prod' gulp compile
-gulp.task('compile', gulp.parallel(scriptsTask.compileJs, stylesTask.compileScss, htmlTask.compileHtml, spriteTask.compileSvg, vendorTask.compileVendors, imagesTask.minifyImg));
+// $ npm run compile
+// $ npm run build
+gulp.task('compile', gulp.series(
+    fontsTask.generateFonts, 
+    fontsTask.fixFontsPath, 
+    fontsTask.generateFontsScss, 
+    fontsTask.moveFontFiles,
 
-// npm run compile:scss || NODE_ENV='prod' gulp build:scss
-gulp.task('styles', gulp.series(stylesTask.compileScss, lurchTask.getScssReport, lurchTask.getTodoReport, lurchTask.compileDashboard));
+    gulp.parallel(
+        scriptsTask.compileJs, 
+        stylesTask.compileScss, 
+        htmlTask.compileHtml, 
+        spriteTask.compileSvg, 
+        vendorTask.compileVendors, 
+        imagesTask.minifyImg
+    )
+));
 
-// npm run compile:html
-gulp.task('html', htmlTask.compileHtml);
+// $ npm run compile:scss
+// $ npm run build:scss
+gulp.task('styles', gulp.series(
+    stylesTask.compileScss, 
 
-// npm run compile:vendor
-gulp.task('vendor', vendorTask.compileVendors);
+    dashboardTask.getScssReport, 
+    dashboardTask.getTodoReport, 
+    dashboardTask.compileDashboard
+));
 
-// npm run compile:js || NODE_ENV='prod' gulp build:js
-gulp.task('scripts', gulp.series(scriptsTask.compileJs, lurchTask.getJsReport, lurchTask.getTodoReport, lurchTask.compileDashboard));
+// $ npm run compile:html
+// $ npm run build:html
+gulp.task('html', 
+    htmlTask.compileHtml
+);
 
-// npm run compile:sprite
-gulp.task('icons', gulp.series(spriteTask.minifySvg, spriteTask.compileSvg));
+// $ npm run compile:vendor
+// $ npm run build:vendor
+gulp.task('vendor', gulp.series(
+    vendorTask.compileVendors,
 
-// npm run compile:fonts
-gulp.task('fonts', gulp.series(fontsTask.generateFonts, fontsTask.fixFontsPath, fontsTask.generateFontsScss, fontsTask.moveFontFiles));
+    dashboardTask.getFilesizeReport, 
+    dashboardTask.compileDashboard
+));
 
-// npm run compile:todo ~~ Deprecated
-gulp.task('todo', todoTask.compileTodo);
+// $ npm run compile:js
+// $ npm run build:js
+gulp.task('scripts', gulp.series(
+    scriptsTask.compileJs, 
 
-// npm run enchant:media
-gulp.task('imgmin', imagesTask.minifyImg);
+    dashboardTask.getJsReport, 
+    dashboardTask.getTodoReport, 
+    dashboardTask.compileDashboard
+));
 
-// npm run enchant:svg
-gulp.task('svgmin', spriteTask.minifySvg);
+// $ npm run compile:sprite
+// $ npm run build:sprite
+gulp.task('icons', gulp.series(
+    spriteTask.minifySvg, 
+    spriteTask.compileSvg,
 
-// npm run enchant:scss
-gulp.task('beautifyScss', stylesTask.beautifyScss);
+    dashboardTask.getFilesizeReport, 
+    dashboardTask.compileDashboard
+));
 
-// npm run lint:scss ~~ Deprecated
-gulp.task('scssLint', stylesTask.lintScss);
+// $ npm run compile:fonts
+// $ npm run build:fonts
+gulp.task('fonts', gulp.series(
+    fontsTask.generateFonts, 
+    fontsTask.fixFontsPath, 
+    fontsTask.generateFontsScss, 
+    fontsTask.moveFontFiles
+));
 
-// npm run lint:js ~~ Deprecated
-gulp.task('jsLint', scriptsTask.lintJs);
+// $ npm run compile:assets
+// $ npm run build:assets
+gulp.task('imgmin', 
+    imagesTask.minifyImg
+);
 
-// npm run docs
-gulp.task('docs', gulp.series(docsTask.generateSassDocs, docsTask.generateJsDocs));
+// $ npm run autofix:scss
+gulp.task('beautifyScss', 
+    stylesTask.beautifyScss
+);
 
-// npm run docs:scss
-gulp.task('scssDocs', docsTask.generateSassDocs);
+// $ npm run docs
+gulp.task('docs', gulp.series(
+    docsTask.generateSassDocs, 
+    docsTask.generateJsDocs
+));
 
-// npm run docs:js
-gulp.task('jsDocs', docsTask.generateJsDocs);
+// $ npm run docs:scss
+gulp.task('scssDocs', 
+    docsTask.generateSassDocs
+);
 
-// npm run start
+// $ npm run docs:js
+gulp.task('jsDocs', 
+    docsTask.generateJsDocs
+);
+
 let tasksRunning = false;
+
+// $ npm run start
 gulp.task('default', () => {
     
-    // console.log('\x1Bc');
+    console.log('\x1Bc');
     console.log(chalk.bold('Watching files in ' + configs.paths.dev.base + ' folder'));
 
     let tasks = [];
@@ -121,7 +179,7 @@ gulp.task('default', () => {
         }
 
         if (tasks.length) {
-            // console.log('\x1Bc');
+            console.log('\x1Bc');
             tasksDebounce = setTimeout(() => {
                 gulp.task('run', gulp.series(...tasks, () => {
                     console.log(chalk.bold('\n--- \n'));
@@ -140,5 +198,6 @@ gulp.task('default', () => {
     });
 });
 
-// TODO: clean task | global and for every ext files
+// TODO: clean task, global and for every ext files
 // TODO: add iconfont task
+// TODO: add html lint task

@@ -2,6 +2,7 @@ const configs               = require('../gulpconfigs.js');
 const chalk                 = require('chalk');
 const sherpa                = require('style-sherpa');
 
+// FIXME: UIKit not printed
 configs.uikit.forEach(uikit => {
     sherpa(`${configs.paths.dev.base}uikit/${uikit}.md`, {
         output: `${configs.paths.dest.uikit}${uikit}.html`,

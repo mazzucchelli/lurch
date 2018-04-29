@@ -10,7 +10,6 @@ $foundation-palette: (
     black: #0a0a0a,
     white: #fefefe
 );
-
 $primary: map-get($foundation-palette, primary);
 $secondary: map-get($foundation-palette, secondary);
 $success: map-get($foundation-palette, success);

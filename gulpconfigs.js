@@ -16,7 +16,7 @@ module.exports = {
             fonts: {
                 filesource: dev + 'fonts/',
                 tempdest: './fontdest/',
-                scssdest: dev + 'scss/settings/',
+                scssdest: dev + 'scss/configs/',
                 scssname: '_fonts.scss',
                 urlReplace: {
                     from: 'url("',

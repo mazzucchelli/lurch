@@ -158,13 +158,13 @@
                         <div class="dashcard--header">
                             <p class="dashcard--title">
                                 <i class="fi-page"></i>
-                                <strong>{{ file.name }}</strong>
+                                <strong>{{ file.path }}</strong>
                             </p>
                         </div>
                         <!-- TODO: compare value with prod -->
                         <div class="dashcard--details grid-x grid-padding-x align-right">
                             <p class="small-6 cell">Size</p>
-                            <p class="small-6 cell text-right"><strong>{{ file.size }} Kb</strong></p>
+                            <p class="small-6 cell text-right"><strong>{{ file.size }}</strong></p>
                         </div>
                     </div>
                 {% endfor %}
