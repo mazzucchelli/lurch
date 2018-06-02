@@ -58,13 +58,13 @@ module.exports = {
     ],
     webpack: {
         entries: [
-            dev + 'js/main.js'
+            dev + 'js/dashboard.js'
         ]
     },
     alfred: {
         filesize: [
-            dest + 'styles/style.css',
-            dest + 'scripts/main.min.js',
+            dest + 'styles/dashboard.css',
+            dest + 'scripts/dashboard.min.js',
             dest + 'media/sprite.svg'
         ]
     }
