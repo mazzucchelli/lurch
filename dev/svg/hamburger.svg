@@ -1,16 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="11px" viewBox="0 0 16 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>Group</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="UI-KIT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="header/mobile" transform="translate(-20.000000, -23.000000)" fill="#000000">
-            <g id="Group" transform="translate(20.000000, 23.000000)">
-                <rect id="Rectangle-22" x="0" y="0" width="16" height="1"></rect>
-                <rect id="Rectangle-22-Copy" x="0" y="5" width="14" height="1"></rect>
-                <rect id="Rectangle-22-Copy-2" x="0" y="10" width="16" height="1"></rect>
-            </g>
-        </g>
-    </g>
+<svg width="16" height="11" viewBox="0 0 16 11" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        Group
+    </title>
+    <path d="M0 0h16v1H0zm0 5h14v1H0zm0 5h16v1H0z" fill-rule="evenodd"/>
 </svg>

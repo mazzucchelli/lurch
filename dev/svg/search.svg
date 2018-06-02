@@ -1,12 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-    <title>search</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icons" transform="translate(-292.000000, -140.000000)" fill="#000000">
-            <path d="M298.5,152 C295.467,152 293,149.533 293,146.5 C293,143.467 295.467,141 298.5,141 C301.533,141 304,143.467 304,146.5 C304,149.533 301.533,152 298.5,152 M307.854,155.146 L303.433,150.726 C304.407,149.589 305,148.115 305,146.5 C305,142.91 302.09,140 298.5,140 C294.91,140 292,142.91 292,146.5 C292,150.09 294.91,153 298.5,153 C300.115,153 301.589,152.407 302.726,151.433 L307.146,155.854 C307.244,155.951 307.372,156 307.5,156 C307.628,156 307.756,155.951 307.854,155.854 C308.049,155.658 308.049,155.342 307.854,155.146" id="search"></path>
-        </g>
-    </g>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        search
+    </title>
+    <path d="M6.5 12A5.506 5.506 0 0 1 1 6.5C1 3.467 3.467 1 6.5 1S12 3.467 12 6.5 9.533 12 6.5 12m9.354 3.146l-4.421-4.42A6.474 6.474 0 0 0 13 6.5 6.5 6.5 0 1 0 6.5 13a6.474 6.474 0 0 0 4.226-1.567l4.42 4.421a.502.502 0 0 0 .708 0 .502.502 0 0 0 0-.708" fill-rule="evenodd"/>
 </svg>

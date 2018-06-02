@@ -1,10 +1,3 @@
-<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
-<desc>Created with Sketch.</desc>
-<defs></defs>
-<g id="UI-KIT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-<g id="wishlist-icon/primary" fill="#000000">
-<path d="M11.099,0 C9.956,0 8.8635,0.3815 8,1.1175 C7.137,0.4065 6.0445,0 4.9015,0 C3.581,0 2.362,0.5085 1.448,1.448 C0.508,2.3625 0,3.6065 0,4.902 C0,6.197 0.508,7.4415 1.448,8.356 L7.67,14.578 C7.721,14.6795 7.848,14.7305 7.975,14.7305 C8.102,14.7305 8.2285,14.6795 8.3305,14.578 L14.5525,8.3815 C15.4925,7.467 16,6.2225 16,4.927 C16,3.632 15.467,2.3625 14.5525,1.448 C13.613,0.5085 12.3935,0 11.099,0 Z" id="wishlist-icon-copy"></path>
-</g>
-</g>
+<svg width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.099 0C9.956 0 8.863.382 8 1.117A4.878 4.878 0 0 0 4.902 0C3.58 0 2.362.508 1.448 1.448A4.8 4.8 0 0 0 0 4.902a4.8 4.8 0 0 0 1.448 3.454l6.222 6.222c.051.102.178.152.305.152a.502.502 0 0 0 .356-.152l6.222-6.196A4.8 4.8 0 0 0 16 4.927a4.964 4.964 0 0 0-1.447-3.479A4.845 4.845 0 0 0 11.098 0z" fill-rule="evenodd"/>
 </svg>

@@ -1,12 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="15px" height="10px" viewBox="0 0 15 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-    <title>arrow-up</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="footer/mobile" transform="translate(-285.000000, -313.000000)" fill="#000000">
-            <polygon id="arrow-up" transform="translate(292.261164, 318.000000) scale(-1, 1) rotate(-90.000000) translate(-292.261164, -318.000000) " points="288 312.541361 293.461483 318.002844 288 323.458202 289.541361 325 296.522329 318.002844 289.541361 311"></polygon>
-        </g>
-    </g>
+<svg width="15" height="10" viewBox="0 0 15 10" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        arrow-up
+    </title>
+    <path d="M12.72 9.261L7.258 3.8 1.803 9.26.261 7.72 7.258.739l7.003 6.98z" fill-rule="evenodd"/>
 </svg>

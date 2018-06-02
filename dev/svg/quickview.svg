@@ -1,12 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="12px" viewBox="0 0 16 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-    <title>quickview</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icons" transform="translate(-432.000000, -216.000000)" fill="#000000">
-            <path d="M440,224 C438.896,224 438,223.104 438,222 C438,220.896 438.896,220 440,220 C441.104,220 442,220.896 442,222 C442,223.104 441.104,224 440,224 M440,219 C438.343,219 437,220.343 437,222 C437,223.657 438.343,225 440,225 C441.656,225 443,223.657 443,222 C443,220.343 441.656,219 440,219 M440,227 C435.72,227 433.2,222.81 433,222 C433.189,221.19 435.72,217 440,217 C444.28,217 446.81,221.21 447,222 C446.79,222.83 444.24,227 440,227 M440,216 C435,216 432,221 432,222 C432,223 435,228 440,228 C445,228 448,223 448,222 C448,221 445,216 440,216" id="quickview"></path>
-        </g>
-    </g>
+<svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        quickview
+    </title>
+    <path d="M8 8a2 2 0 1 1 .001-4.001A2 2 0 0 1 8 8m0-5a3 3 0 1 0 0 6 3 3 0 0 0 0-6m0 8c-4.28 0-6.8-4.19-7-5 .189-.81 2.72-5 7-5 4.28 0 6.81 4.21 7 5-.21.83-2.76 5-7 5M8 0C3 0 0 5 0 6s3 6 8 6 8-5 8-6-3-6-8-6" fill-rule="evenodd"/>
 </svg>

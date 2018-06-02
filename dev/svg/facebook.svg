@@ -1,12 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="20px" viewBox="0 0 10 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
-    <title>facebook</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Icons" transform="translate(-315.000000, -718.000000)" fill="#555555">
-            <path d="M324.571429,728.857143 L325,725.285714 L321.714286,725.285714 L321.714286,723 C321.714286,722 322,721.285714 323.428571,721.285714 L324.857143,721.285714 L324.857143,718.142857 C324.571429,718.142857 323.857143,718 322.428571,718 C319.714286,718 317.857143,719.714286 317.857143,722.714286 L317.857143,725.285714 L315,725.285714 L315,728.857143 L318,728.857143 L318,738 L321.714286,738 L321.714286,728.857143 L324.571429,728.857143 Z" id="facebook"></path>
-        </g>
-    </g>
+<svg width="10" height="20" viewBox="0 0 10 20" xmlns="http://www.w3.org/2000/svg">
+    <title>
+        facebook
+    </title>
+    <path d="M9.571 10.857L10 7.286H6.714V5c0-1 .286-1.714 1.715-1.714h1.428V.143C9.571.143 8.857 0 7.43 0 4.714 0 2.857 1.714 2.857 4.714v2.572H0v3.571h3V20h3.714v-9.143h2.857z" fill="#555" fill-rule="evenodd"/>
 </svg>
