@@ -52,13 +52,7 @@ gulp.task('compile',
 // $ npm run compile:scss
 // $ npm run build:scss
 gulp.task('styles',
-    gulp.series(
-        stylesTask.compileScss,
-
-        dashboardTask.getScssReport,
-        dashboardTask.getTodoReport,
-        dashboardTask.compileDashboard
-    )
+    stylesTask.compileScss
 );
 
 // $ npm run compile:html
@@ -70,24 +64,13 @@ gulp.task('html',
 // $ npm run compile:vendor
 // $ npm run build:vendor
 gulp.task('vendor',
-    gulp.series(
-        vendorTask.compileVendors,
-
-        dashboardTask.getFilesizeReport,
-        dashboardTask.compileDashboard
-    )
+    vendorTask.compileVendors
 );
 
 // $ npm run compile:js
 // $ npm run build:js
 gulp.task('scripts',
-    gulp.series(
-        scriptsTask.compileJs,
-
-        dashboardTask.getJsReport,
-        dashboardTask.getTodoReport,
-        dashboardTask.compileDashboard
-    )
+    scriptsTask.compileJs
 );
 
 // $ npm run compile:sprite
@@ -95,10 +78,7 @@ gulp.task('scripts',
 gulp.task('icons',
     gulp.series(
         spriteTask.minifySvg,
-        spriteTask.compileSvg,
-
-        dashboardTask.getFilesizeReport,
-        dashboardTask.compileDashboard
+        spriteTask.compileSvg
     )
 );
 

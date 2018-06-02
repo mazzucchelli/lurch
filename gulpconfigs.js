@@ -11,9 +11,7 @@ module.exports = {
             base: dev,
             js: dev + 'js/',
             scss: [
-                dev + 'scss/*.scss',
-                dev + 'scss/pages/*.scss',
-                dev + 'scss/plugins/*.scss'
+                dev + 'scss/*.scss'
             ],
             images: dev + 'images/',
             svg: dev + 'svg/',
@@ -60,29 +58,13 @@ module.exports = {
     ],
     webpack: {
         entries: [
-            dev + 'js/main.js',
-            dev + 'js/checkout.js',
-            dev + 'js/plp.js',
-            dev + 'js/pdp.js',
-            dev + 'js/widgets.js',
-            dev + 'js/cart.js'
+            dev + 'js/main.js'
         ]
     },
     alfred: {
         filesize: [
-            dest + 'styles/global.css',
-            dest + 'styles/widgets.css',
-            dest + 'styles/plp.css',
-            dest + 'styles/pdp.css',
-            dest + 'styles/myaccount.css',
-            dest + 'styles/checkout.css',
+            dest + 'styles/style.css',
             dest + 'scripts/main.min.js',
-            dest + 'scripts/checkout.min.js',
-            dest + 'scripts/plp.min.js',
-            dest + 'scripts/pdp.min.js',
-            dest + 'scripts/widgets.min.js',
-            dest + 'scripts/widgets.min.js',
-            dest + 'scripts/cart.min.js',
             dest + 'media/sprite.svg'
         ]
     }
