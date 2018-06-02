@@ -89,7 +89,6 @@ const compileLurch = {
                 fsTempValue.prettySize = prettyBytes(file.stat.size);
                 compareValue = (file.stat.size * 100 / comapareSize[index].uglySize - 100).toFixed(3);
                 if (compareValue > 0) { compareValue = '+' + compareValue; }
-                console.log(file.relative, compareValue);
                 fsTempValue.compare = compareValue;
                 fsValues.push(fsTempValue);
                 fsTempValue = {};

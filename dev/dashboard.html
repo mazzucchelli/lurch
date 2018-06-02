@@ -10,55 +10,29 @@
     </head>
     <body class="dashboard-page">
 
-        <main class="dashboard-container grid-x grid-padding-x grid-padding-y">
-
-            <section class="cell medium-4">
-
-                <div class="dashcard dashcard__tasks clearfix">
-                    <div class="dashcard--header">
-                        <p class="dashcard--title">
-                            <i class="fi-results"></i><strong>Todo tasks - {{ todoReport.TODO.length }}</strong>
-                        </p>
+        <div class="filesize-container grid-x grid-padding-x">
+            {% for file in sizeReport %}
+                <section class="cell medium-3 large-2">
+                    <div class="dashcard dashcard__sizes clearfix">
+                        <div class="dashcard--header">
+                            <p class="dashcard--title">
+                                <i class="fi-page"></i>
+                                <strong>{{ file.path }}</strong>
+                            </p>
+                        </div>
+                        <!-- TODO: compare value with prod -->
+                        <div class="dashcard--details grid-x grid-padding-x align-right">
+                            <p class="small-6 cell"><strong>{{ file.prettySize }}</strong></p>
+                            <p class="small-6 cell text-right">{{ file.compare }}%</p>
+                        </div>
                     </div>
-                    <div class="dashcard--details">
-                        {% for todo in todoReport.TODO %}
-                            <div class="detail-block">
-                                <div class="detail-block--header">
-                                    <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
-                                </div>
-                                <div class="detail-block--content">
-                                    <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
-                                </div>
-                            </div>
-                            {% if loop.index != loop.length %}<hr>{% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
+                </section>
+            {% endfor %}
+        </div>
 
-                <div class="dashcard dashcard__tasks clearfix">
-                    <div class="dashcard--header">
-                        <p class="dashcard--title">
-                            <i class="fi-results"></i><strong>Fixme tasks - {{ todoReport.FIXME.length }}</strong>
-                        </p>
-                    </div>
-                    <div class="dashcard--details">
-                        {% for todo in todoReport.FIXME %}
-                            <div class="detail-block">
-                                <div class="detail-block--header">
-                                    <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
-                                </div>
-                                <div class="detail-block--content">
-                                    <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
-                                </div>
-                            </div>
-                            {% if loop.index != loop.length %}<hr>{% endif %}
-                        {% endfor %}
-                    </div>
-                </div>
+        <div class="dashboard-container grid-x grid-padding-x grid-padding-y">
 
-            </section>
-
-            <section class="cell medium-5 large-6">
+            <section class="cell medium-6">
 
                 <div class="dashcard dashcard__reports">
                     <div class="dashcard--header">
@@ -152,26 +126,53 @@
 
             </section>
 
-            <section class="cell medium-3 large-2">
-                {% for file in sizeReport %}
-                    <div class="dashcard dashcard__sizes clearfix">
-                        <div class="dashcard--header">
-                            <p class="dashcard--title">
-                                <i class="fi-page"></i>
-                                <strong>{{ file.path }}</strong>
-                                <span>+{{ file.compare }}</span>
-                            </p>
-                        </div>
-                        <!-- TODO: compare value with prod -->
-                        <div class="dashcard--details grid-x grid-padding-x align-right">
-                            <p class="small-6 cell">Size</p>
-                            <p class="small-6 cell text-right"><strong>{{ file.prettySize }}</strong></p>
-                        </div>
+            <section class="cell medium-6">
+
+                <div class="dashcard dashcard__tasks clearfix">
+                    <div class="dashcard--header">
+                        <p class="dashcard--title">
+                            <i class="fi-results"></i><strong>Todo tasks - {{ todoReport.TODO.length }}</strong>
+                        </p>
                     </div>
-                {% endfor %}
+                    <div class="dashcard--details">
+                        {% for todo in todoReport.TODO %}
+                            <div class="detail-block">
+                                <div class="detail-block--header">
+                                    <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
+                                </div>
+                                <div class="detail-block--content">
+                                    <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
+                                </div>
+                            </div>
+                            {% if loop.index != loop.length %}<hr>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="dashcard dashcard__tasks clearfix">
+                    <div class="dashcard--header">
+                        <p class="dashcard--title">
+                            <i class="fi-results"></i><strong>Fixme tasks - {{ todoReport.FIXME.length }}</strong>
+                        </p>
+                    </div>
+                    <div class="dashcard--details">
+                        {% for todo in todoReport.FIXME %}
+                            <div class="detail-block">
+                                <div class="detail-block--header">
+                                    <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
+                                </div>
+                                <div class="detail-block--content">
+                                    <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
+                                </div>
+                            </div>
+                            {% if loop.index != loop.length %}<hr>{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
             </section>
 
-        </main>
+        </div>
 
         <script src="scripts/vendor.min.js"></script>
         <script src="scripts/dashboard.min.js"></script>
