@@ -1,0 +1,27 @@
+.has-tip {
+    border-bottom: none;
+    display: inline;
+}
+
+.tooltip {
+    // background-color: $primary-color;
+    // max-width: 400px;
+    // padding: 20px;
+    color: $body-font-color;
+
+    &.top {
+        &:before {
+            border-color: $primary-color transparent transparent;
+        }
+    }
+
+    &.bottom {
+        &:before {
+            border-color: transparent transparent $primary-color;
+        }
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}

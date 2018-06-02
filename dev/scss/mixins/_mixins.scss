@@ -1,0 +1,38 @@
+@mixin no-text {
+	font: 0/0 a;
+    text-indent: percentage(1);
+    white-space: nowrap;
+    color: transparent;
+    overflow: hidden;
+}
+
+@mixin arrow($arrow-width, $arrow-height, $arrow-color, $arrow-border-width, $arrow-direction: null) {
+    display: block;
+    width: $arrow-width;
+    height: $arrow-height;
+    border: solid $arrow-color;
+    border-width: 0 $arrow-border-width $arrow-border-width 0;
+
+    @if ($arrow-direction == down) {
+        transform: rotate(45deg);
+	} @else if ($arrow-direction == up) {
+        transform: rotate(-135deg);
+	} @else if ($arrow-direction == right) {
+        transform: rotate(-45deg);
+	} @else if ($arrow-direction == left) {
+        transform: rotate(135deg);
+	}
+}
+
+@mixin list-separator($separator, $margin, $color) {
+	$separator: '/';
+	$margin: 2;
+	$color: $primary-color;
+	display: inline;
+	&:not(:last-child)::after {
+		position: relative;
+		margin: rem-calc(0 $margin);
+		content: $separator;
+		color: $color;
+	}
+}

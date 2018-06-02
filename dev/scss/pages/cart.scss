@@ -1,0 +1,142 @@
+$include-fonts: false;
+
+@import "../setup/settings";
+@import '../../../node_modules/foundation-sites/scss/foundation';
+@import './cart-checkout/common.scss';
+
+#cart {
+    @include breakpoint (medium down) {
+        margin: 20px 10px 0 10px;
+    }
+
+    .card {
+        padding: 20px 0;
+        border-bottom: 1px solid $lightgrey;
+        position: relative;
+
+        &.out-of-stock {
+            opacity: .5;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .product-image {
+        @include breakpoint (large) {
+            margin: 0 20px 0 10px;
+        }
+    }
+
+    .product-info {
+        color: $black;
+    }
+
+    .line-item-name {
+        line-height: rem-calc(16);
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+
+    .line-item-code {
+        margin-bottom: 15px;
+    }
+
+    .item-attributes {
+        margin-bottom: 10px;
+    }
+
+    .line-item-total-price {
+        font-weight: 500;
+        color: $black;
+    }
+
+    .edit-add-to-wishlist {
+        @include breakpoint (large) {
+            margin-top: 20px;
+        }
+
+        @include breakpoint (medium down) {
+            @include flex;
+            justify-content: space-between;
+        }
+
+        a {
+            &:first-child {
+                margin-right: 30px;
+            }
+        }
+    }
+
+    .line-item-attributes {
+        line-height: rem-calc(14);
+        margin-bottom: 5px;
+    }
+
+    .out-of-stock {
+        .line-item-availability {
+            color: $error;
+        }
+    }
+
+    .price-info,
+    .quantity-info {
+        @include flex;
+        @include flex-align(center, middle);
+
+        @include breakpoint (medium down) {
+            margin-top: 10px;
+        }
+    }
+
+    .quantity-info {
+        @include breakpoint (large) {
+            text-align: center;
+        }
+
+        @include breakpoint (medium down) {
+            @include flex-align(left, middle);
+        }
+    }
+
+    .product-card-footer {
+        flex-grow: 2;
+    }
+
+    .remove-cart-product {
+        position: absolute;
+        top: 20px;
+        right: 10px;
+
+        @include breakpoint (medium down) {
+            right: 0;
+        }
+    }
+}
+
+.payment-methods-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+        margin-bottom: 10px;
+        margin-right: 10px;
+    }
+
+    img {
+        width: 51px;
+        height: 32px;
+    }
+}
+
+.callout {
+    &.cart-callout {
+        @include breakpoint (large) {
+            margin-bottom: 40px;
+        }
+    }
+}

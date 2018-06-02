@@ -1,0 +1,43 @@
+// 404 banner
+.error-wrap {
+    background: $whitesmoke;
+    text-align: center;
+
+    &-content {
+        margin: 0 auto;
+        max-width: 480px;
+        padding: rem-calc(65 10);
+
+        @include breakpoint(small only) {
+            padding: rem-calc(30 10);
+        }
+    }
+
+    p:last-of-type {
+        margin-bottom: rem-calc(40);
+
+        @include breakpoint(small only) {
+            margin-bottom: rem-calc(20);
+        }
+    }
+
+    .trigger-search-cta {
+        background: $primary-color;
+        padding: rem-calc(20 50 18 20);
+        position: relative;
+        width: 100%;
+        max-width: rem-calc(340);
+        display: block;
+        margin: 0 auto;
+        text-align: left;
+
+        svg {
+            width: rem-calc(16);
+            height: rem-calc(16);
+            position: absolute;
+            top: 50%;
+            right: rem-calc(20);
+            transform: translateY(-50%)
+        }
+    }
+}

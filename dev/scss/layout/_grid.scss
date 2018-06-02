@@ -1,0 +1,25 @@
+.grid-container {
+    &.small-full {
+        @include breakpoint (small only) {
+            padding-left: 0;
+            padding-right: 0;
+            max-width: 100%;
+        }
+    }
+
+    &.medium-full {
+        @include breakpoint (medium only) {
+            padding-left: 0;
+            padding-right: 0;
+            max-width: 100%;
+        }
+    }
+
+    &.medium-down-full {
+        @include breakpoint (medium down) {
+            padding-left: 0;
+            padding-right: 0;
+            max-width: 100%;
+        }
+    }
+}

@@ -1,0 +1,75 @@
+.widget-2-col-img-txt {
+    @include xy-grid;
+
+    @include breakpoint (medium down) {
+        margin-bottom: 80px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 185px;
+    }
+
+    .image {
+        @include xy-cell($gutters: 0);
+
+        @include breakpoint (large) {
+            @include xy-cell(7, $gutters: 0);
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .text {
+        position: relative;
+        z-index: -1;
+        @include xy-cell($gutters: 0);
+        @include flex;
+        @include flex-align(center, middle);
+
+        @include breakpoint (large) {
+            @include xy-cell(5, $gutters: 0);
+            transform: translateY(15%);
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            background-color: $primary-color;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            @include xy-cell(2 of 5, $gutters: 0);
+
+            @include breakpoint (medium down) {
+                display: none;
+            }
+        }
+
+        .inner {
+            padding: 0 80px;
+
+            @include breakpoint (medium down) {
+                text-align: center;
+            }
+
+            @include breakpoint (medium only) {
+                padding: 20px 40px;
+            }
+
+            @include breakpoint (small only) {
+                padding: 20px;
+            }
+        }
+    }
+
+    .button.editorial {
+        @include breakpoint (small only) {
+            position: absolute;
+            bottom: -19px;
+            left: 50%;
+            margin-left: -19px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+$include-fonts: true;
+
+@import "setup/settings";
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-xy-grid-classes;
+@include foundation-forms;
+@include foundation-button;
+@include foundation-typography;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+@include foundation-sticky;
+@include foundation-flex-classes;
+@include foundation-reveal;
+@include foundation-close-button;
+@include foundation-tooltip;
+//@include foundation-callout;
+
+@import "mixins/mixins";
+@import "layout/layout";
+@import "components/components";

@@ -1,0 +1,69 @@
+h1, h2, h3, h4, h5, h6 {
+    color: $black;
+    line-height: 1.1em;
+
+    &.underline {
+        border-bottom: 1px solid $lightgrey;
+        padding-bottom: $header-margin-bottom;
+    }
+}
+
+p {
+    font-size: rem-calc(16);
+    line-height: 1.6em;
+}
+
+.big-text {
+    font-size: rem-calc(110);
+    line-height: 1.1em;
+    color: $primary-color;
+    font-weight: 500;
+
+    @include breakpoint(small only) {
+        font-size: rem-calc(90);
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-left: 20px;
+    }
+}
+
+.text-dark {
+    color: $black !important;
+}
+
+.strike-through {
+    text-decoration: line-through;
+}
+
+a {
+    &.underline {
+        text-decoration: underline;
+        color: $black;
+    }
+
+    &.has-icon {
+        position: relative;
+        padding-left: 25px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            fill: $black;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+ul {
+    &.disc {
+        list-style: disc;
+    }
+
+    &.inside {
+        list-style-position: inside;
+    }
+}

@@ -1,0 +1,198 @@
+// product-tile
+.product-tile {
+	position: relative;
+	padding: 10px 0;
+	.image-container {
+		margin-bottom: 17px;
+		a {		
+			position: relative;
+			min-width: 100%;
+			white-space: nowrap;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-content: flex-start;
+			align-items: flex-start;
+		}
+		span {
+			display: none;
+			width: 100%;
+			white-space: normal;
+			&:nth-child(1) {
+				display: inline-block;
+			}
+		}
+		.tile-image {
+			margin: auto;
+			width: 100%;
+		}
+	}
+	.price {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 12px;
+		font-size: 14px;
+		line-height: 14px;
+		color: $black;
+		.strike-through {
+			text-decoration: line-through;	
+			padding-right: 10px;
+			color: $darkgrey;
+		}
+	}
+
+	.tile-label {
+		height: 16px;
+		width: 100%;
+		line-height: 12px;
+		padding: 3px 0 0 0;
+		margin-bottom: 10px;
+		span {
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 12px;
+			color: $darkgrey;
+			text-transform: uppercase;
+			position: relative;
+			//text-decoration: overline underline;
+			&:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -1px;
+				height: 1px;
+				background-color: $darkgrey;
+				width: 100%;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				top: -3px;
+				left: 0;
+				height: 1px;
+				background-color: $darkgrey;
+				width: 100%;
+			}
+
+		}
+	}
+}
+
+.product-tile-title {
+	width: 100%;
+	padding: 0;
+	@include breakpoint(medium) {
+		position: relative;
+	}
+	.pdp-link {
+		height: 37px;
+		font-size: 14px;
+		line-height: 16px;
+		font-weight: 500; 
+		color: $black;
+		width: 100%;
+		//overflow: hidden;
+		@include breakpoint(medium) {
+			padding-right: 24px;
+		}
+	}
+	.wishlist {
+		position: absolute;
+		top: 20px;
+		right: 15px;		
+		@include breakpoint(medium) {
+			top: 1px;
+			right: 1px;
+		}
+		.wishlist-icon {
+			position: absolute;
+			top: 1px;
+			right: 1px;
+			fill: $black;
+		}
+		.wishlist-background {
+			fill: transparent;	
+		}
+		&:hover {
+			.wishlist-background {
+				fill: $black;	
+			}
+		}
+	}
+}
+
+.tile-body {
+	height: 26px;
+	padding: 0;
+	//line-height: 2.7;
+	font-weight: 500;
+	word-spacing: 5px;
+	width: 100%;
+	position: relative;
+
+	.color-swatches {
+		width: 100%;
+		@include breakpoint(medium) {
+			padding-right: 20px;
+		}
+	}
+	.quickview {
+		position: absolute;
+		top: 1px;
+		right: 1px;
+		@include breakpoint(small only) {
+			display: none;
+		}
+	}
+	.swatch {
+		width: 40px;
+		height: 26px;
+	}
+}
+
+.products-slot-slider-wrapper {
+    position: relative;
+}
+
+.products-slot-slider {
+    overflow: hidden;
+
+    @include breakpoint (large) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .tile-image-even {
+        display: none;
+    }
+
+    .widget-ctrl {
+        justify-content: flex-start;
+        @include breakpoint (medium only) {
+            display: none;
+        }
+    }
+
+    .slider {
+        height: 400px;
+        overflow: hidden;
+
+        &.owl-loaded {
+            height: auto;
+            overflow: visible;
+        }
+    }
+
+    .owl-item {
+        float: left;
+    }
+
+    .owl-dots,
+    .owl-nav {
+        display: none;
+    }
+}
+ 

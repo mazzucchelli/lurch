@@ -1,0 +1,93 @@
+.notify-modal {
+	.notify-form {
+		@include breakpoint(medium down) {
+			max-width: 315px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.form-row {
+		margin-top: 30px;
+		padding-left: 7px;
+		padding-right: 7px;
+
+		@include breakpoint(medium down) {
+			margin-top: 20px;
+		}
+
+		label {
+			line-height: 1;
+
+			&.label {
+				margin-bottom: 8px;
+			}
+		}
+
+		.input {
+			min-height: 44px;
+			margin-bottom: 0;
+		}
+
+		.row-select {
+			@include xy-cell(4, true, 20px);
+
+			@include breakpoint(medium down) {
+				@include xy-cell(12, false, 0);
+			}
+
+			.label {
+				@include breakpoint(medium down) {
+					margin-bottom: 0;
+				}
+			}
+
+			.custom-select {
+				&__option,
+				&__dropdown {
+					width: 100%;
+				}
+
+				&__dropdown {
+					max-height: 90px;
+				}
+			}
+		}
+
+		.row-email {
+			@include xy-cell(8, true, 20px);
+
+			@include breakpoint(medium down) {
+				@include xy-cell(12, false, 0);
+				margin-top: 20px;
+			}
+		}
+
+		.list-size {
+			width: 100%;
+			margin-top: 14px;
+
+			@include breakpoint(medium down) {
+				margin-top: 0;
+			}
+		}
+
+		.form-error {
+			margin-top: 8px;
+			margin-bottom: 0;
+			line-height: 1;
+		}
+	}
+
+	.row-action {
+		margin-top: 20px;
+
+		@include breakpoint(medium down) {
+			margin-top: 30px;
+		}
+
+		.submit {
+			margin-bottom: 0;
+		}
+	}
+}

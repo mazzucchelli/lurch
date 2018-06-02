@@ -1,0 +1,134 @@
+.widget-3-col-img-shopbylook {
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint (medium down) {
+        margin-bottom: 80px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 120px;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: $primary-color;
+        height: 60%;
+        z-index: -1;
+
+        @include breakpoint (small only) {
+            right: 30px;
+            left: 30px;
+            bottom: auto;
+            top: 180px;
+            height: 50%;
+        }
+    }
+
+    .big-text {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 10%;
+        text-align: center;
+        margin-bottom: -200px;
+    }
+
+    .slides {
+        @include xy-grid;
+        overflow: hidden;
+
+        &.owl-loaded {
+            display: block;
+        }
+
+        > .slide {
+            @include xy-cell(4, $gutters: 0);
+
+            &:nth-of-type(1n+4) {
+                display: none;
+            }
+        }
+
+        .slide {
+            text-align: center;
+            padding-bottom: rem-calc(40);
+
+            @include breakpoint (small only) {
+                padding-bottom: 0;
+                position: relative;
+            }
+
+            img {
+                @include breakpoint (large) {
+                    height: 650px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    img {
+        margin-bottom: 20px;
+    }
+
+    .editorial {
+        @include breakpoint (small only) {
+            display: none;
+        }
+    }
+
+    .owl-stage {
+        @include xy-grid;
+    }
+
+    .owl-item {
+        @include xy-cell(4, $gutters: 0);
+    }
+
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        top: 50%;
+        margin-top: -19px;
+        font-size: rem-calc(36);
+        color: $black;
+
+        @include breakpoint (medium) {
+            background-color: $secondary-color;
+            color: $white;
+            font-size: rem-calc(28);
+        }
+    }
+
+    .owl-prev {
+        left: -19px;
+
+        @include breakpoint (medium down) {
+            left: 0;
+        }
+    }
+
+    .owl-next {
+        right: -19px;
+
+        @include breakpoint (medium down) {
+            right: 0;
+        }
+    }
+
+    .owl-dots {
+        bottom: -25px;
+
+        @include breakpoint (small only) {
+            bottom: -10px;
+        }
+    }
+}

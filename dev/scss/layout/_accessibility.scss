@@ -1,0 +1,26 @@
+[tabindex] {
+	[data-whatinput="mouse"] &,
+	[data-whatinput="touch"] & {
+		outline: 0;
+	}
+}
+
+.no-text {
+	font: 0/0 a;
+    text-indent: percentage(1);
+    white-space: nowrap;
+    color: transparent;
+    overflow: hidden;
+}
+
+.visuallyhidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	white-space: nowrap;
+	clip: (1px, 1px, 1px, 1px);
+	border: 0;
+}

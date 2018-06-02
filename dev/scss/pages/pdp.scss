@@ -1,0 +1,10 @@
+$include-fonts: false;
+@import '../../../node_modules/foundation-sites/scss/foundation';
+@import "pdp/components";
+@import "pdp/containers";
+@import "pdp/side-details";
+@import "pdp/modals";
+@import "pdp/size-modal";
+@import "pdp/notify-modal";
+@import "pdp/product-set";
+@import "pdp/recommendations";

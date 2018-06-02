@@ -1,0 +1,46 @@
+$foundation-palette: (
+    black: #000000,
+    darkgrey: #555555,
+    lightgrey: #CCCCCC,
+    whitesmoke: #F7F7F7,
+    white: #ffffff,
+    
+    success: #58BE6B,
+    warning: #F8B13B,
+    alert: #C82828,
+    featured: #D0021B,
+    successform: #7ED321,
+
+    primary: #F2DFD6,
+    secondary: #DBB19F
+);
+
+$buttons-palette: (
+    primary: #000000,
+    secondary: #ffffff
+);
+
+// COLORS
+$black: map-get($foundation-palette, black);
+$darkgrey: map-get($foundation-palette, darkgrey);
+$lightgrey: map-get($foundation-palette, lightgrey);
+$whitesmoke: map-get($foundation-palette, whitesmoke);
+$white: map-get($foundation-palette, white);
+
+$success: map-get($foundation-palette, success);
+$warning: map-get($foundation-palette, warning);
+$error: map-get($foundation-palette, alert);
+$featured: map-get($foundation-palette, featured);
+$success-form: map-get($foundation-palette, successform);
+
+$primary-color: map-get($foundation-palette, primary);
+$secondary-color: map-get($foundation-palette, secondary);
+
+$body-background: map-get($foundation-palette, white);
+$body-font-color: map-get($foundation-palette, darkgrey);
+
+$dark-gray: map-get($foundation-palette, darkgrey);
+$medium-gray: map-get($foundation-palette, darkgrey);
+$light-gray: map-get($foundation-palette, lightgrey);
+
+$global-color-pick-contrast-tolerance: 5;

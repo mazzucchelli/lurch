@@ -1,0 +1,116 @@
+.widget-2-col-img-txt-accessories {
+    @include xy-grid;
+
+    @include breakpoint (medium down) {
+        margin-bottom: 120px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 100px;
+    }
+
+    .image {
+        @include xy-cell($gutters: 0);
+
+        @include breakpoint (small only) {
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @include breakpoint (medium) {
+            @include xy-cell(6, $gutters: 0);
+        }
+
+        @include breakpoint (large) {
+            @include xy-cell(7, $gutters: 0);
+        }
+
+        &:before {
+            @include breakpoint (small only) {
+                content: '';
+                position: absolute;
+                background-color: $primary-color;
+                top: 15%;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .text {
+        position: relative;
+        z-index: -1;
+        @include xy-cell($gutters: 0);
+        @include flex;
+        @include flex-align(center, middle);
+
+        @include breakpoint (medium) {
+            @include xy-cell(6, $gutters: 0);
+            transform: translateY(15%);
+        }
+
+        @include breakpoint (large) {
+            @include xy-cell(5, $gutters: 0);
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            background-color: $primary-color;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            @include xy-cell(4 of 6, $gutters: 0);
+
+            @include breakpoint (large) {
+                @include xy-cell(4 of 5, $gutters: 0);
+            }
+
+            @include breakpoint (small only) {
+                display: none;
+            }
+        }
+
+        .inner {
+            padding: 0 80px;
+
+            @include breakpoint (medium down) {
+                text-align: center;
+            }
+
+            @include breakpoint (medium only) {
+                padding: 20px 40px;
+            }
+
+            @include breakpoint (small only) {
+                padding: 20px;
+            }
+        }
+    }
+
+    .button.editorial {
+        @include breakpoint (small only) {
+            position: absolute;
+            bottom: -19px;
+            left: 50%;
+            margin-left: -19px;
+        }
+    }
+}
+
+.widget-2-col-img-txt-accessories-wrapper {
+    @include breakpoint (medium down) {
+        margin-bottom: 80px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 120px;
+    }
+}

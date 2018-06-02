@@ -1,0 +1,166 @@
+.header-banner {
+    background-color: $black;
+    color: $white;
+    height: 30px;
+
+    @include flex;
+    @include flex-align(center, middle);
+
+    .grid-container {
+        width: 100%;
+    }
+
+    .select-country-cta {
+        color: $white;
+        
+        svg {
+            width: 10px;
+            height: 10px;
+            padding-top: 2px;
+            fill: currentColor;
+        }
+    }
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+
+    svg {
+        height: 46px;
+        width: 176px;
+
+        @include breakpoint (medium down) {
+            height: 30px;
+            width: 115px;
+        }
+    }
+}
+
+header {
+    @include breakpoint (large) {
+        margin-bottom: 55px;
+    }
+    z-index: 100;
+}
+
+.header {
+    @include breakpoint (large) {
+        padding-top: 20px;
+        // margin-bottom: 55px;
+    }
+
+    @include breakpoint (medium down) {
+        height: 60px;
+        border-bottom: 1px solid $primary-color;
+        @include flex;
+        @include flex-align(center, middle);
+        padding: 0 20px;
+    }
+
+    .header-grid {
+        @include xy-grid;
+
+        @include breakpoint (medium down) {
+            width: 100%;
+        }
+    }
+
+    .cell-center {
+        @include xy-cell(3 of 5);
+        @include flex;
+        @include flex-align(center, middle);
+    }
+
+    .cell-left,
+    .cell-right {
+        @include flex;
+        @include xy-cell(1 of 5, $gutters: 0);
+        align-items: center;
+    }
+
+    .cell-right {
+        justify-content: flex-end;
+    }
+
+    .cell-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+    }
+}
+
+.sub-header {
+    background-color: $white;
+    transition: top 1s;
+    position: relative;
+
+    &.is-anchored {
+        position: static;
+        top: -80px !important;
+    }
+
+    &.is-stuck {
+        border-bottom: 1px solid $primary-color;
+        top: 0 !important;
+
+        .header {
+            height: 74px;
+            padding-top: 0;
+            // margin-bottom: 0;
+        }
+        
+        .cell-left {
+            @include breakpoint (large) {
+                display: none;
+            }
+        }
+
+        .cell-menu {
+            display: block;
+            position: static;
+            @include xy-cell(8 of 12);
+        }
+
+        .cell-center {
+            @include breakpoint (large) {
+                @include xy-cell(2 of 12);
+            }
+        }
+
+        .cell-right {
+            @include breakpoint (large) {
+                @include xy-cell(2 of 12);
+            }
+        }
+
+        .level-1 {
+            justify-content: left;
+
+            > li {
+                padding: 30px 15px
+            }
+        }
+
+        nav {
+            position: static;
+        }
+
+        #logo  {
+            height: 36px;
+
+            svg {
+                width: 138px;
+                height: 36px;
+            }
+        }
+    }
+}
+
+#menu-scroll-trigger {
+    position: absolute;
+    top: 150px;
+    height: 1px;
+    z-index: -1;
+}

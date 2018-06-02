@@ -1,0 +1,63 @@
+.spinner {
+    font-size: 10px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: rem-calc(50);
+    height: rem-calc(50);
+    border-radius: 50%;
+    background: #000000;
+    background: linear-gradient(to right, #000000 10%, rgba(0,0,0, 0) 42%);
+    position: relative;
+    animation: spin 1.4s infinite linear;
+    transform: translateZ(0);
+
+    &.small {
+        width: rem-calc(20);
+        height: rem-calc(20);
+    }
+
+    &.inline {
+        display: inline-block;
+    }
+
+    &:before {
+        width: 50%;
+        height: 50%;
+        background: #000000;
+        border-radius: 100% 0 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+    }
+
+    &:after {
+        background: $white;
+        width: 85%;
+        height: 85%;
+        border-radius: 50%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}  
+
+.spin {    
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

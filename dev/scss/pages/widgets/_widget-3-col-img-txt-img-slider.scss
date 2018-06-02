@@ -1,0 +1,224 @@
+.widget-3-col-img-txt-img-slider {
+    @include xy-grid;
+
+    @include breakpoint (medium down) {
+        position: relative;
+        z-index: 2;
+        margin-bottom: 80px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 200px;
+    }
+
+    &:before {
+        @include breakpoint (medium down) {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $primary-color;
+            top: 30%;
+            z-index: -1;
+        }
+    }
+
+    .image-left,
+    .image-right {
+        @include xy-cell($gutters: 0);
+        overflow: hidden;
+
+        .wrap {
+            width: 300%;
+            @include flex;
+            position: relative;
+            transition: .5s left;
+            left: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .image-left {
+        @include breakpoint (large) {
+            @include xy-cell(5, $gutters: 0);
+        }        
+    }
+
+    .image-right {
+        @include breakpoint (large) {
+            @include xy-cell(2, $gutters: 0);
+        }
+        @include breakpoint (medium down) {
+            display: none;
+        }
+    }
+
+    .text {
+        position: relative;
+        z-index: -1;
+        text-align: center;
+        @include xy-cell($gutters: 0);
+        
+
+        @include breakpoint (large) {
+            @include xy-cell(5, $gutters: 0);
+            transform: translateY(15%);
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            background-color: $primary-color;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            
+            @include breakpoint (large) {
+                @include xy-cell(4 of 5, $gutters: 0);
+            }
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            background-color: $primary-color;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            @include xy-cell(1 of 5, $gutters: 0);
+        }
+
+        .wrap {
+            // width: 300%;
+            height: 100%;
+            position: relative;
+            // @include flex;
+        }
+
+        .inner {
+            padding: 0 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            @include breakpoint (medium down) {
+                text-align: center;
+            }
+
+            @include breakpoint (medium down) {
+                padding: 20px 40px;
+            }
+
+            @include breakpoint (medium down) {
+                padding: 20px;
+            }
+        }
+    }
+
+    .button.editorial {
+        @include breakpoint (medium down) {
+            display: none;
+        }
+    }
+
+    .box {
+        width: 100%;
+        position: relative;
+        text-align: center;
+
+        p {
+            display: none;
+        }
+
+        .inner {
+            padding: 10px 0;
+        }
+    }
+
+    .owl-stage-outer {
+        overflow: hidden;
+    }
+
+    .owl-stage {
+        @include xy-grid;
+
+        .owl-item {
+            @include xy-cell(10, $gutters: 0);
+            @include flex;
+
+            @include breakpoint (small only) {
+                width: 280px !important;
+            }
+
+            @include breakpoint (medium only) {
+                width: 356px !important;
+            }
+        }
+    }
+
+    .owl-dots {
+        bottom: -25px;
+    }
+
+    .owl-nav {
+        display: none;
+    }
+}
+
+.widget-ctrl {
+    @include flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: $black;
+    font-size: rem-calc(14);
+    font-weight: 500;
+    height: 22px;
+    margin-top: 5px;
+
+    div {
+        height: 15px;
+        line-height: 15px;
+        margin: 0 5px;
+    }
+
+    .widget-prev,
+    .widget-next {
+        position: relative;
+        width: 15px;
+        height: 15px;
+
+        &:after {
+            content: '';
+            border-style: solid;
+            border-width: 2px 2px 0 0;
+            display: block;
+            height: 9px;
+            width: 9px;
+            position: absolute;
+            vertical-align: top;
+            margin-left: -2px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+    }
+
+    .widget-prev {
+        &:after {
+            margin-left: -7px;
+            transform: translateX(50%) translateY(-50%) rotate(-140deg);
+        }
+    }
+}

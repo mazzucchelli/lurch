@@ -1,0 +1,108 @@
+.modal-content {
+    .change-country-trigger {
+        text-align: center;
+
+        a {
+            color: $black;
+            text-decoration: underline;
+        }
+    }
+}
+
+.select-country-modal {
+    .country-list {
+        max-width: 80%;
+        margin: rem-calc(50) auto;
+        margin-bottom: rem-calc(40);
+
+        @include breakpoint(medium down) {
+            max-width: 90%;
+        }
+
+        @include breakpoint(small only) {
+            max-width: 100%;
+        }
+
+        li {
+            margin-bottom: rem-calc(15);
+        }
+
+        a {
+            &.is-current {
+                color: $black;
+            }
+        }
+    }
+
+    .select-country-content {
+        > p {
+            text-align: center;
+        }
+    }
+}
+
+.golive-country-modal {
+    .golive-country-content {
+        text-align: center;
+        padding: rem-calc(20 40);
+
+        @include breakpoint(medium only) {
+            padding-top: rem-calc(40);
+            max-width: rem-calc(500);
+            margin: 0 auto;
+        }
+
+        @include breakpoint(small only) {
+            padding: rem-calc(20);
+        }
+
+        > p:first-of-type {
+            margin-bottom: 0;
+        }
+
+        form {
+            text-align: left;
+
+            p {
+                font-size: rem-calc(14);
+            }
+
+            a {
+                color: $black;
+                text-decoration: underline;
+            }
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        .change-country-trigger {
+            text-align: center;
+        }
+    }
+}
+
+.select-lang-modal {
+    .select-lang-content {
+        text-align: center;
+
+        .lang {
+            border-bottom: 2px solid transparent;
+            line-height: 2.4;
+            text-transform: capitalize;
+
+            &.is-current {
+                color: $black;
+                font-weight: 500;
+                border-bottom: 2px solid $secondary-color;
+            }
+        }
+    }
+}
+
+.localization-modal {
+    .localization-content {
+        text-align: center;
+    }
+}

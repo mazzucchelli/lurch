@@ -1,0 +1,9 @@
+$include-fonts: false;
+@import '../setup/settings';
+@import '../../../node_modules/foundation-sites/scss/foundation';
+@import '../mixins/mixins';
+
+@import 'plp/plp-header';
+@import 'plp/plp-search';
+@import 'plp/plp-grid';
+@import 'plp/plp-footer';

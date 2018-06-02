@@ -1,0 +1,98 @@
+// product grid
+
+// R-1    R-2    R-3
+// +---+  +-+-+  +-+-+-+-+
+// +   +  +-+-+  +-+-+-+-+
+// +---+  +-+-+
+
+.plp-grid-wrapper:nth-of-type(4n+0) {
+	.plp-row-item-1 {
+		order: 2;
+	}
+	.plp-row-item-2 {
+		order: 1;
+	}
+}
+
+.plp-two-row {
+	.plp-grid-wrapper {
+		@include breakpoint (medium) {
+			.plp-row-item-1 {
+				width: 100%;
+			}
+			.plp-row-item-3 {
+				width: 50%;
+			}
+			.plp-row-item-2 {
+				width: 100%;
+				.image-composition {
+					font-size: 0;  
+					.tile-image {
+						width: 50%;
+					}
+				}
+			}
+			
+		}
+	}
+}
+
+.plp-grid-wrapper .plp-content-box {
+	@include breakpoint(small only) {
+		width: 100%;
+	}
+	padding-top: 10px;
+}
+
+// AKA Box Rosa
+.plp-content-box-head {
+	background: $primary-color;
+	padding: rem-calc(35 30);
+	.plp-content-box-title {
+		font-size: 24px;
+		font-weight: 500;
+		color: $black;
+		@include breakpoint (medium) {
+			font-size: 20px;
+		}
+		@include breakpoint (large) {
+			font-size: 24px;
+		}
+	}
+	p {
+		color: $darkgrey;
+		font-size: 16px;
+		@include breakpoint (medium) {
+			font-size: 14px;
+		}
+	}
+	@include breakpoint(small only) {
+		text-align: center;
+	}
+	@include breakpoint (medium) {
+		min-height: 329px;
+	}
+}
+
+.plp-two-row {
+	.plp-grid-wrapper .plp-content-box {
+		width: 100%;
+		@include breakpoint (medium) {
+			margin-bottom: 20px;
+		}
+	}
+	.plp-content-box-head {
+		min-height: inherit;
+		text-align: center;
+	}
+}
+
+// disable parallax on two row layout
+.plp-two-row {
+	.image-composition {
+		transform: none!important;
+	}
+}
+.plp-parallax-wrapper {
+	overflow: hidden;
+}

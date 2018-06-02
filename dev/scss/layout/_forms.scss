@@ -1,0 +1,38 @@
+.input-group {
+    input {
+        border-right: 0;
+    }
+
+    button {
+        background-color: $primary-color;
+        width: 42px;
+        @include flex;
+        @include flex-align(center, middle);
+        border-top: 1px solid $light-gray;
+        border-bottom: 1px solid $light-gray;
+        border-right: 1px solid $light-gray;
+    }
+
+    svg {
+        width: 14px;
+        height: 14px;
+        fill: $black;
+    }
+}
+
+fieldset {
+    margin-bottom: 20px;
+}
+
+legend {
+    @extend h5;
+    margin-bottom: 20px;
+}
+
+.is-valid-input {
+    border-color: $success-form;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAABGdBTUEAALGPC/xhBQAAANhJREFUGBljYCAAGm6r8DXcUDIBKWPEp7bhqrbQv//fdzD8/6/FwsjoyARS3PDfgQVkArLGhjvKYv//fd8PVGjKyMi4/x+33GXGSbdV2N/+/LsKqFCOjYvBo1rp/suWm2rSv3/93vOfgUEDaPdqaW2h6HTGs7/BJv//z/j3/38Gg5/fGA83XFZxACo8BFLIxMiwUEfbJBKkEGQr2M2r/ocyX716ds7///8TQIIgwMTEOL1e62420AlAfWgAqJCx4arShLrLiv/rryp2o0lj5zZeVXLGLsPAAAB2nlPNFaD5IgAAAABJRU5ErkJggg==');
+    background-size: 10px 7px;
+    background-repeat: no-repeat;
+    background-position: center right 14px;
+}

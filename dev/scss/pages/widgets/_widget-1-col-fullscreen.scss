@@ -1,0 +1,36 @@
+.widget-1-col-fullscreen {
+    position: relative;
+
+    @include breakpoint (medium down) {
+        margin-bottom: 80px;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 220px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    p, h1 {
+        margin: 0;
+    }
+
+    .text {
+        background-color: $primary-color;
+
+        @include breakpoint (medium down) {
+            padding: 20px;
+            text-align: center;
+        }
+
+        @include breakpoint (large) {
+            padding: 40px;
+            position: absolute;
+            top: calc(100% - 60px);
+            left: 0;
+            width: 80%;
+        }
+    }
+}

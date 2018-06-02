@@ -1,0 +1,54 @@
+.callout {
+    padding: 20px;
+    position: relative;
+    margin: 0 0 1rem 0;
+
+    &.alert {
+        background-color: $primary-color;
+    }
+
+    &.success {
+        background-color: $success;
+    }
+
+    &.primary {
+        background-color: $white;
+        border: 1px solid $primary-color;
+    }
+
+    &.warning {
+        background-color: $warning;
+    }
+    
+    .callout-title {
+        font-size: rem-calc(14);
+        text-transform: uppercase;
+        font-weight: 500;
+        color: $black;
+        padding-left: 25px;
+        position: relative;
+        line-height: rem-calc(16);
+
+        svg {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .callout-message {
+        margin-bottom: 5px;
+        font-size: rem-calc(14);
+
+        &:nth-of-type(2),
+        &:first-child {
+            margin-top: 10px;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

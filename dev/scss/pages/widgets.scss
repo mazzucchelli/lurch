@@ -1,0 +1,46 @@
+$include-fonts: false;
+
+@import "../setup/settings";
+@import '../../../node_modules/foundation-sites/scss/foundation';
+
+.widget {
+    position: relative;
+    z-index: 1;
+
+    .text {
+        background-color: $primary-color;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+
+    // .image {
+    //     img {
+    //         transition: .8s all cubic-bezier(.165,.84,.44,1);
+    //         clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+    //     }
+    //     &.show {
+    //         img {
+    //             clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    //         }
+    //     }
+    // }
+}
+
+@import 'widgets/widget-2-col-img-txt';
+@import 'widgets/widget-3-col-img-txt-img';
+@import 'widgets/widget-3-col-txt-img-img';
+@import 'widgets/widget-2-col-img-txt-accessories';
+@import 'widgets/widget-3-col-img-shopbylook';
+@import 'widgets/widget-customer-care';
+@import 'widgets/widget-3-col-img-txt-img-slider';
+@import 'widgets/widget-2-col-img-img';
+@import 'widgets/widget-circles';
+@import 'widgets/widget-1-col-video';
+@import 'widgets/widget-1-col-fullscreen';
+ 

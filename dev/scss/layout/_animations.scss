@@ -1,0 +1,21 @@
+.fade-in.mui-enter {
+	opacity: 0;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+	transition-property: opacity;
+}
+
+.fade-in.mui-enter.mui-enter-active {
+	opacity: 1;
+}
+
+.fade-out.mui-leave {
+	opacity: 1;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
+	transition-property: opacity;
+}
+
+.fade-out.mui-leave.mui-leave-active {
+	opacity: 0;
+}

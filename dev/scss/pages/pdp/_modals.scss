@@ -1,0 +1,44 @@
+.product-msg-modal {
+	max-width: 530px;
+	border: 1px solid #F2DFD6;
+	padding: 20px 22px;
+
+	@include breakpoint(medium down) {
+		max-width: 100%;
+		border: 0;
+		padding: 0;
+	}
+
+	.close-modal {
+		font-weight: 300;
+
+		&:active {
+			color: black;
+		}
+	}
+
+	.modal-header {
+		padding: 0;
+
+		@include breakpoint(medium down) {
+			padding: 16px 20px;
+		}
+
+		.header-title {
+			font-size: 16px;
+			margin-bottom: 0;
+		}
+	}
+
+	.modal-content {
+		@include breakpoint(medium down) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
+	}
+
+	.info {
+		max-width: 315px;
+		margin: 0 auto;
+	}
+}

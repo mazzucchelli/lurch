@@ -1,0 +1,19 @@
+.breadcrumb {
+	margin-bottom: 0;
+
+	.breadcrumb-item {
+		line-height: 1;
+
+		&:not(:last-of-type) {
+			&::after {
+				content: '/';
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+		}
+
+		a {
+			transition: color 0.3s ease;
+		}
+	}
+}

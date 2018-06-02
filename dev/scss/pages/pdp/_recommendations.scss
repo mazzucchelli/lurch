@@ -1,0 +1,91 @@
+.recommendations {
+	.title {
+		font-size: rem-calc(36px);
+		line-height: 1;
+		margin-bottom: 0;
+
+		@include breakpoint(medium down) {
+			font-size: rem-calc(28px);
+		}
+	}
+
+	.row-products {
+		margin-top: 50px;
+
+		@include breakpoint(medium down) {
+			margin-top: 20px;
+			@include xy-gutters(16px, $negative: true);
+		}
+
+		.cell {
+			@include breakpoint(medium down) {
+				position: relative;
+				@include xy-cell(3, true, 16px);
+			}
+		}
+	}
+
+	.product-info {
+		display: block;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.product-actions {
+		margin-top: 20px;
+	}
+
+	.product-link {
+		display: block;
+	}
+
+	.product-name {
+		font-size: 14px;
+		margin-bottom: 0;
+	}
+
+	.wishlist-social {
+		padding-left: 10px;
+	}
+
+	.add-to-wishlist {
+		display: block;
+		position: relative;
+		height: 16px;
+
+		@include breakpoint(medium down) {
+			position: absolute;
+			top: 14px;
+			right: 14px;
+			z-index: 10;
+		}
+
+		> svg {
+			width: 16px;
+			height: 15px;
+
+			@include breakpoint(medium down) {
+				fill: #F2DFD6;
+			}
+		}
+	}
+
+	.price {
+		margin-top: 22px;
+
+		@include breakpoint(medium down) {
+			margin-top: 2px;
+		}
+	}
+
+	.strike-through {
+		margin-right: 4px;
+	}
+
+	.label-line {
+		font-size: 12px;
+		margin-bottom: 0;
+	}
+}

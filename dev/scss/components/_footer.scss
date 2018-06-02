@@ -1,0 +1,172 @@
+footer {
+    @include breakpoint (large) {
+        border-top: 1px solid $light-gray;
+        padding-top: 40px;
+    } 
+}
+
+.footer-container {
+    h6 {
+        @include breakpoint (medium down) {
+            padding: 30px 20px;
+            margin-bottom: 0;
+            position: relative;
+            border-bottom: 1px solid $light-gray;
+        }
+
+        @include breakpoint (large) {
+            margin-bottom: rem-calc(20);
+        }
+
+        &:after {
+            @include breakpoint (medium down) {
+                content: '';
+                background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjEwcHgiIHZpZXdCb3g9IjAgMCAxNSAxMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5hcnJvdy1kb3duPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlN5bWJvbHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9ImZvb3Rlci9tb2JpbGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yODUuMDAwMDAwLCAtMzEzLjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJhcnJvdy1kb3duIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOTIuMjYxMTY0LCAzMTguMDAwMDAwKSBzY2FsZSgtMSwgMSkgcm90YXRlKDkwLjAwMDAwMCkgdHJhbnNsYXRlKC0yOTIuMjYxMTY0LCAtMzE4LjAwMDAwMCkgIiBwb2ludHM9IjI4OCAzMTIuNTQxMzYxIDI5My40NjE0ODMgMzE4LjAwMjg0NCAyODggMzIzLjQ1ODIwMiAyODkuNTQxMzYxIDMyNSAyOTYuNTIyMzI5IDMxOC4wMDI4NDQgMjg5LjU0MTM2MSAzMTEiPjwvcG9seWdvbj4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+                background-repeat: no-repeat;
+                position: absolute;
+                width: 14px;
+                height: 14px;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        &.open {
+            &:after {
+                transform: rotate(180deg) translateY(50%);
+            }
+        }
+    }
+
+    .call-customer-care {
+        background-color: $primary-color;
+        padding: 15px 20px;
+
+        @include breakpoint (medium down) {
+            border-bottom: 1px solid $light-gray;
+        }
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            fill: $black;
+        }
+
+        .content-asset {
+            @include flex;
+            @include flex-align(left, middle);
+        }
+    }
+
+    .menu-footer {
+        @include breakpoint (medium down) {
+            display: none;
+            border-bottom: 1px solid $light-gray;
+            margin-bottom: 0;
+        }
+
+        li {
+            @include breakpoint (medium down) {
+                padding: 15px 20px;
+                border-bottom: 1px solid $light-gray;
+            }
+
+            @include breakpoint (large) {
+                height: rem-calc(16);
+                line-height: rem-calc(16);
+                margin-bottom: rem-calc(20);
+            }
+
+            &:last-child {
+                @include breakpoint (medium down) {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+}
+
+.social-links {
+    @include flex;
+    margin-bottom: 20px;
+
+    @include breakpoint (medium down) {
+        padding: 20px 0;
+        @include flex-align(center, middle);
+        margin-bottom: 0;
+    }
+
+    a {
+        @include flex;
+        @include flex-align(center, middle);
+        width: 40px;
+        height: 40px;
+
+        @include breakpoint (medium down) {
+            margin: 0 5px;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        fill: $darkgrey
+    }
+}
+
+.locales-cta {
+    @include breakpoint (medium down) {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    > div {
+        padding: 6px 0;
+    }
+
+    svg {
+        fill: currentColor;
+        width: 10px;
+        height: 10px;
+        padding-top: 2px;
+    }
+}
+
+.copyright-notice {
+    @include breakpoint (medium down) {
+        background-color: $primary-color;
+        padding: 20px;
+    }
+}
+
+.home-email-signup {
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 20px;
+        
+        @include breakpoint (large) {
+            margin-bottom: 40px
+        }
+    }
+
+    @include breakpoint (small) {
+        padding: 20px 0;
+    }
+
+    @include breakpoint (medium) {
+        padding: 30px 0;
+    }
+
+    @include breakpoint (large) {
+        padding: 40px 0;
+    }
+}

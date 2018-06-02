@@ -1,0 +1,559 @@
+.plp-header-top {
+	&-nav {
+		padding: 20px 0;
+		.breadcrumb {
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			&-item {
+				@include list-separator('/', 2, $black);
+			}
+		}
+	}
+	&-tags {
+		width: 100%;
+		position: relative;
+		display: none;
+		@include breakpoint (large) {
+			display: block;
+		}
+		ul {
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto 40px auto;
+			padding: 20px 15px;
+			li {
+				@include list-separator('|', 2, $primary-color);
+			}
+			&:after {
+				z-index: -1;
+				content: '';
+				width: 100%;
+				height: 62px;
+				background: $whitesmoke;
+				position: absolute;
+				top: 0;
+				right: 50%;
+				transform: translateX(50%);
+			}
+			&:empty {
+				display: none;
+			}
+		}
+	}
+	.filter-results {
+		z-index: 80;
+		@include breakpoint(large down) {
+			padding: rem-calc(20 0);
+			width: 100%;
+			position: fixed;
+			background: $black;
+			color: $white;
+			bottom: 0;
+			left: 0;
+			svg {
+				display: none;
+			}
+		}
+		@include breakpoint(large) {
+			text-transform: uppercase;
+		}
+	}
+}
+
+.header-banner {
+	position: relative;
+	z-index: 90;
+}
+
+.mobile-filter-nav-wrapper {
+	@include breakpoint(large down) {
+		height: 100vh;
+		overflow-y: scroll;
+		padding-bottom: 100px;
+		width: 100%;
+	}
+}
+
+body.mobile-filter-nav-visible {
+	@include breakpoint(large down) {
+		height: 100%;
+		margin: 0;
+		overflow: hidden;
+	}
+}
+
+.plp-header-content {
+	background: $white;
+	z-index: 90;
+
+	@include breakpoint (large) {
+		border-top: 1px solid $primary-color; 
+		padding: 0 60px 40px 60px;
+	}
+
+	&-top {
+		background: $whitesmoke;
+		color: $black;
+		padding: rem-calc(15 20);
+
+		@include breakpoint (large) {
+			background: $white;
+			padding: rem-calc(40 0);
+		}
+
+		.close-button-label {
+			font-size: rem-calc(14);
+			vertical-align: middle;
+		}
+	}
+
+	&-card {
+		&-title {
+			font-weight: 500;
+		}
+		&-body {
+			ul {
+				margin: 0;
+				padding: 0;
+				font-size: 0;
+				line-height: 1;
+			}
+			li {
+				padding: 0;
+				margin: 0 10px 10px 0;
+				display: inline-block;
+				box-shadow: inset 0 0 0 1px $black;
+			}
+			a {
+				span {
+					color: $black;
+					display: block;
+					font-size: 16px;
+					padding: 10px;
+					transition: $button-transition;
+					&:hover {
+						background: $black;
+						color: $white;
+						@include breakpoint (large) {
+							background: inherit;
+							color: inherit;
+						}
+					}
+					&.selected {
+						background: $black;
+						color: $white;
+					}
+				}
+				.card-icon {
+					display: none;
+				}
+			}
+			@include breakpoint (large) {
+				li {
+					display: inherit;
+					box-shadow: none;
+				}
+				a {
+					background: inherit;
+					color: $darkgrey;
+					span {
+						padding: 8px;
+						font-size: 14px;
+						display: inherit;
+						color: $darkgrey;
+						&.selected {
+							background: transparent;
+							color: $black;
+						}
+					}
+					.card-icon {
+						display: inherit;
+					}
+				}
+			}
+		}
+	}
+}
+
+.label-suggest-title,
+.layout-switcher {
+	color: $black;
+	display: none;
+	@include breakpoint (large) {
+		display: block;
+	}
+}
+
+.layout-switcher {
+	.cta-layout-1,
+	.cta-layout-2 {
+		word-spacing: 6px;
+	}
+	.cta-layout-1 svg {
+		// TODO UNDECLARED VARIABLE
+		fill: #D8D8D8;
+	}
+	.plp-two-row & {
+		.cta-layout-1 svg {
+			fill: $black;
+		}
+		.cta-layout-2 svg {
+			// TODO UNDECLARED VARIABLE
+			fill: #D8D8D8;
+		}
+	}
+}
+
+.label-mobile-sort {
+	@include breakpoint (large) {
+		display: none;
+	}
+}
+
+.plp-header-top {
+	position: relative;
+}
+
+.plp-header-top-sort {
+	color: $black;
+	padding: 0 20px 13px 20px;
+
+	.plp-sort-order.plp-header-bottom-selector {
+		@include flex;
+		height: 52px;
+
+		li {
+            @include flex-align(center, middle);
+            @include flex;
+            border-right: 4px solid $white;
+            text-align: center;
+            width: 100%;
+            &:last-child {
+               border: none; 
+            }
+		}
+		strong {
+			display: none;
+		}
+
+		a {
+			@include flex-align(center, middle);
+			@include flex;
+			background: $primary-color;
+			color: $darkgrey;
+			font-weight: 500;
+			height: 100%;
+			line-height: rem-calc(15.4);
+			padding: 10px;
+			transition: $button-transition;
+			width: 100%;
+		}
+		
+		.current a,
+		a:hover {
+			background: $black;
+			color: $white;
+		}
+	}
+
+	.label-mobile-sort {
+		display: block;
+		padding: 14px 0;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	@include breakpoint (large) {
+		display: none;
+	}
+}
+
+.refinement-bar {
+	background: $white;
+	display: none;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 101;
+
+	@include breakpoint (large) {
+		height: inherit;
+		position: absolute;
+		top: -1px;
+		z-index: 80;
+	}
+
+	&-bg {
+		background: $white;
+		height: 100%;
+		left: 0;
+		opacity: 1;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: -1;
+		@include breakpoint(large) {
+			background: $black;
+			opacity: .8;
+		}
+	}
+}
+
+.refinements {
+	display: block;
+	.refinement {
+		width: 100%;
+	}
+	
+	@include breakpoint (large) {
+		display: flex;
+		justify-content: center;
+		.refinement {
+			width: auto;
+			padding-right: 20px;
+			margin-right: 20px;
+		}
+	}
+}
+
+.plp-close-wrapper {
+	.close {
+		font-size: rem-calc(14);
+		position: relative;
+		padding-left: rem-calc(26);
+		height: rem-calc(18);
+		line-height: rem-calc(20);
+		svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+}
+
+.plp-header-bottom {
+	background: $primary-color;
+	@include breakpoint (large) {
+		padding: 14px 0;
+		.plp-container {
+			padding: 0 60px;
+			@include flex;
+			@include flex-align(center, middle);
+		}
+	}
+
+	.plp-header-bottom-rocker {
+		@include flex;
+		@include flex-align(right, middle);
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		background: $primary-color;
+		.button {
+			margin: 0;
+			width: 100%;
+			&.reset {
+				@include breakpoint (large down) {
+					border: 0;
+				}
+			}
+		}
+
+
+		@include breakpoint (large) {
+			position: inherit;
+			width: 50%;
+			.button {
+				margin: 5px;
+				max-width: 170px;
+			}
+		}
+	}
+	.plp-header-bottom-sort-wrapper {
+		display: none;
+		margin: 14px 0;
+		.plp-header-bottom-selector {
+			line-height: 1;
+			padding: 0;
+			margin: 0;
+			li {
+				display: inline;
+				line-height: 1;
+				margin-left: 30px;
+				a {
+					color: $black;
+					// padding: rem-calc(1 0);
+				}
+				&:hover,
+				&.current {
+					box-shadow: 0 2px 0 0 $secondary-color;	
+				}
+			}
+		}
+		strong {
+			text-transform: uppercase;
+			color: $black;
+		}
+		@include breakpoint (large) {
+			display: block;
+			width: 50%;
+		}
+	}	
+}
+
+.refinement {
+	.plp-header-content-card-title {
+		color: $black;
+		padding: 13px 20px;
+		margin-bottom: 0;
+		position: relative;
+		border-top: 4px solid $light-gray;
+		cursor: pointer;
+
+		&:after {
+			content: '';
+			position: absolute;
+			right: 20px;
+			top: calc(50% - 4px);
+			transform: translateY(-50%);
+			@include arrow(7px, 7px, black, 2px, down);
+			transition: transform 0.3s ease;
+		}
+
+		&.open {
+			&:after {
+				transform: rotate(225deg) translateY(50%);
+			}
+		}
+		@include breakpoint (large) {
+			padding: 0;
+			position: inherit;
+			border-top: none;
+			cursor: default;
+			&:after {
+				display: none;
+			}
+		}
+	}
+	.plp-header-content-card-body {
+		padding: 0 20px 13px 20px;
+		display: none;
+		@include breakpoint (large) {
+			padding: 0;
+			display: block;
+		}
+	}
+	&.open .plp-header-content-card-body {
+	  display: block;
+	}
+
+}
+
+@keyframes animationFramesIn {
+  0% {
+    opacity:0;
+    transform:  translate(0px,-10px)  ;
+  }
+  100% {
+    opacity:1;
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+@keyframes animationFramesOut {
+  0% {
+    opacity:0;
+    transform:  translate(0px,-10px)  ;
+  }
+  100% {
+    opacity:0;
+    transform:  translate(0px,0px)  ;
+  }
+}
+
+.product-tile {
+	.image-composition {
+		position: relative;
+		.tile-image:last-child {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+	.tile-body {
+		//overflow: hidden;
+		@include breakpoint (large) {
+			visibility: hidden;
+			transition: visibility 0.3s, opacity 0.3s linear;
+			animation: animationFramesOut ease 0.6s;
+			animation-iteration-count: 1;
+			transform-origin: 50% 50%;
+			animation-fill-mode: forwards;
+			animation-play-state: paused;
+		}
+	}
+	@include breakpoint (large) {
+		&:hover {
+			.tile-body {
+				animation: animationFramesIn ease 0.6s;
+				animation-play-state: running;
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+	.tile-image:last-child {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0.3s, opacity 0.3s linear;
+	}
+	&:hover {
+		.tile-image:last-child {
+			@include breakpoint (large) {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+}
+
+.plp-two-row {
+	.plp-row-item-2 {
+		.image-composition {
+			.tile-image {
+				@include breakpoint (medium) {
+					position: inherit;
+					visibility: visible;
+					opacity: 1;
+					transition: none;
+				}
+			}
+		}
+	}
+	.plp-grid-wrapper:first-child {
+		.plp-row-item-3:nth-of-type(4n+0) {
+			@include breakpoint (medium) {
+			width: 100%;
+			.image-composition {
+				font-size: 0;  
+				.tile-image {
+					width: 50%;
+						position: inherit;
+						visibility: visible;
+						opacity: 1;
+						transition: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+// TEMPORARY FIX
+//.sub-header.is-anchored{top:inherit!important}
+//.refinement-bar{display: none}
+// END TEMPORARY FIX

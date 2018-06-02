@@ -1,0 +1,93 @@
+.widget-customer-care {
+    @include breakpoint (small only) {
+        position: relative;
+        margin-bottom: 35px;
+    }
+
+    @include breakpoint (medium) {
+        @include xy-grid;
+        @include xy-gutters($negative: true);
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: 60px;
+    }
+
+    @include -zf-each-breakpoint() {
+        @if(type-of($grid-margin-gutters) == 'map' and map-has-key($grid-margin-gutters, $-zf-size) and $-zf-size != $-zf-zero-breakpoint) {
+            .box {
+                @include xy-cell-static($breakpoint: $-zf-size);
+            }
+        }
+    }
+
+    .box {
+        @include breakpoint (medium) {
+            @include xy-cell(3);
+        }
+
+        background-color: $primary-color;
+        padding: 20px;
+        text-align: center;
+        @include flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        @include breakpoint (medium only) {
+            @include xy-cell(6, $gutter-position: right left top bottom);
+        }
+
+        @include breakpoint (small only) {
+            width: 100%;
+            position: relative;
+        }
+    }
+
+    .owl-stage-outer {
+        overflow: hidden;
+        padding-bottom: 25px;
+    }
+
+    .owl-stage {
+        @include xy-grid;
+
+        .owl-item {
+            @include xy-cell(10, $gutters: 0);
+            @include flex;
+            width: 300px !important;
+            
+        }
+    }
+
+    .owl-dots {
+        bottom: -25px;
+    }
+
+    .owl-nav {
+        display: none;
+    }
+
+    h5 {
+        font-size: rem-calc(20);
+    }
+
+    svg {
+        width: 100%;
+        height: 32px;
+        margin: 20px auto;
+    }
+
+    p {
+        font-size: rem-calc(14);
+    }
+
+    .button.editorial {
+        @include breakpoint (small only) {
+            position: absolute;
+            bottom: -19px;
+            left: 50%;
+            margin-left: -19px;
+        }
+    }
+}

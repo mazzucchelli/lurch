@@ -1,0 +1,109 @@
+blockquote {
+    position: relative;
+    border: none;
+    z-index: 1;
+
+    @include breakpoint (small only) {
+        margin-left: 30px;
+    }
+
+    @include breakpoint (medium only) {
+        margin-bottom: rem-calc(50);
+        padding: 20px 0 0 0;
+    }
+
+    @include breakpoint (large) {
+        margin-bottom: rem-calc(70);
+        padding: 40px 0 0 0;
+    }
+
+    &:before {
+        content: "\201C";
+        color: $primary-color;
+        position: absolute;
+        top: -10px;
+        line-height: 1;
+        z-index: -1;
+
+        @include breakpoint (medium down) {
+            font-size: rem-calc(200);
+            left: -30px;
+        }
+
+        @include breakpoint (small only) {
+            top: -20px;
+            left: -10px;
+        }
+
+        @include breakpoint (large) {
+            font-size: rem-calc(300);
+            left: -40px;
+        }
+    }
+
+    p {
+        margin: 0;
+
+        @include breakpoint (medium down) {
+            font-size: rem-calc(16);
+            line-height: rem-calc(26);
+        }
+
+        @include breakpoint (large) {
+            font-size: rem-calc(24);
+            line-height: rem-calc(40);
+            color: $black;
+        }
+    }
+}
+
+.separator {
+    height: 1px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: $light-gray;
+
+    &.small {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    &.large {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    &.huge {
+        margin-top: 160px;
+        margin-bottom: 160px;
+    }
+}
+
+.spacer {
+    height: 40px;
+
+    &.small {
+        height: 20px;
+    }
+
+    &.large {
+        height: 80px;
+    }
+
+    &.huge {
+        height: 160px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+ 

@@ -1,0 +1,66 @@
+select {
+    width: auto;
+    height: rem-calc(44);
+    border: 1px solid $light-gray;
+    padding: 0 32px 0 15px;
+    font-size: rem-calc(14);
+    font-weight: 500;
+    border-radius: 0;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIxNXB4IiBoZWlnaHQ9IjEwcHgiIHZpZXdCb3g9IjAgMCAxNSAxMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4gICAgICAgIDx0aXRsZT5hcnJvdy1kb3duPC90aXRsZT4gICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+ICAgIDxkZWZzPjwvZGVmcz4gICAgPGcgaWQ9IlN5bWJvbHMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPiAgICAgICAgPGcgaWQ9ImZvb3Rlci9tb2JpbGUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yODUuMDAwMDAwLCAtMzEzLjAwMDAwMCkiIGZpbGw9IiMwMDAwMDAiPiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJhcnJvdy1kb3duIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyOTIuMjYxMTY0LCAzMTguMDAwMDAwKSBzY2FsZSgtMSwgMSkgcm90YXRlKDkwLjAwMDAwMCkgdHJhbnNsYXRlKC0yOTIuMjYxMTY0LCAtMzE4LjAwMDAwMCkgIiBwb2ludHM9IjI4OCAzMTIuNTQxMzYxIDI5My40NjE0ODMgMzE4LjAwMjg0NCAyODggMzIzLjQ1ODIwMiAyODkuNTQxMzYxIDMyNSAyOTYuNTIyMzI5IDMxOC4wMDI4NDQgMjg5LjU0MTM2MSAzMTEiPjwvcG9seWdvbj4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==) !important;
+    background-position: right -20px center;
+
+    &:disabled {
+        background-color: $whitesmoke;
+        background-image: none !important;
+        color: $dark-gray;
+        border-width: 0;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    &:focus {
+        // border-color: $black;
+        border-color: $secondary-color;
+    }
+
+    &.expanded {
+        width: 100%;
+    }
+
+    &.clear {
+        border-width: 0;
+    }
+
+    &.dark {
+        border-color: $black;
+    }
+
+    &.is-invalid-input {
+        color: $error;
+    }
+
+    &.is-valid-input {
+        border-color: $success-form;
+        background-position: right -20px center;
+    }
+}
+ 
+.inline-select-wrap {
+    label {
+        display: inline-block;
+        color: $darkgrey;
+        font-weight: 300;
+    }
+
+    select {
+        display: inline-block;
+        height: auto;
+        padding-left: 0;
+        padding-right: rem-calc(20);
+        font-weight: 300;
+        border: 0;
+        color: $darkgrey;
+        line-height: 1;
+        background-position: right -15px top 3px;
+    }
+}

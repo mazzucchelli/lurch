@@ -1,0 +1,174 @@
+$close-search-wrapper-height: 50px;
+$search-height: 48px;
+
+#search {
+    position: fixed;
+    background-color: $white;
+    top: 0;
+    bottom: 0;
+    transition: left .3s ease;
+
+    @include breakpoint (medium down) {
+        left: 100%;
+        width: 100%;
+        z-index: 1001;
+    }
+
+    @include breakpoint (large) {
+        z-index: 100;
+        display: none;
+        right: 0;
+        left: 0;
+        overflow-y: auto;
+        padding: 90px 60px;
+    }
+
+    .search-visible & {
+        @include breakpoint (medium down) {
+            left: 0;
+        }
+
+        display: block;
+    }
+
+    .suggestions-wrapper {
+        @include breakpoint (medium down) {
+            position: absolute;
+            top: $search-height + $close-search-wrapper-height;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow-y: auto;
+        }
+    }
+
+    .search-field-wrapper {
+        position: relative;
+
+        input {
+            border: none;
+            margin: 0;
+            padding-left: 0;
+
+            @include breakpoint (medium down) {
+                padding-right: 45px;
+                padding-left: 20px;
+                font-size: rem-calc(18);
+                height: $search-height;
+                background-color: $primary-color;
+            }
+
+            @include breakpoint (large) {
+                padding-right: 35px;
+                font-size: rem-calc(24);
+                margin-bottom: 20px;
+                border-bottom: 1px solid $light-gray;
+            }
+
+            &:focus {
+                border-color: $black;
+            }
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @include breakpoint (medium down) {
+                width: 16px;
+                height: 16px;
+                right: 20px;
+            }
+
+            @include breakpoint (large) {
+                width: 24px;
+                height: 24px;
+                right: 0;
+            }
+        }
+    }
+
+    h5 {
+        @include breakpoint (medium down) {
+            padding: 15px 20px;
+            border-bottom: 1px solid $light-gray;
+        }
+    }
+
+    h5, h6 {
+        margin: 0;
+
+        .underline {
+            font-size: rem-calc(14);
+        }
+    }
+
+    .search-section {
+        & {
+            color: $black;
+        }
+        
+        @include breakpoint (medium down) {
+            border-bottom: 14px solid $whitesmoke;
+        }
+
+        @include breakpoint (large) {
+            margin-bottom: 40px;
+        }
+    }
+
+    .item {
+        border-bottom: 1px solid $light-gray;
+
+        @include breakpoint (medium down) {
+            padding: 15px 20px;
+        }
+
+        @include breakpoint (large) {
+            padding: 10px 0;
+        }
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    .item-product {
+        img {
+            margin-right: 15px;
+        }
+    }
+
+    .close-search-wrapper {
+        height: $close-search-wrapper-height;
+        background-color: $whitesmoke;
+        padding: 0 20px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .close-modal {
+        @include breakpoint (large) {
+            position: absolute;
+            top: 60px;
+            right: 60px;
+        }
+    }
+
+    .popular-searches {
+        @include breakpoint (medium down) {
+            display: none;
+        }
+    }
+}
+
+.search-visible {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
