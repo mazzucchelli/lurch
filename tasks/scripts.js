@@ -8,42 +8,45 @@ let entries = {};
 let filesArray = [];
 
 if (typeof configs.webpack.entries === 'string') {
-    let file = configs.paths.dev.js + configs.webpack.entries;
-    filesArray.push(file)
-    entries[ path.basename(file).slice(0, - path.extname(file).length) ] = path.resolve(file);
+    entries[ path.basename(configs.webpack.entries).slice(0, -path.extname(configs.webpack.entries).length) ] = path.resolve(configs.webpack.entries);
 } else {
-    configs.webpack.entries.forEach(entry => {
-        let file = configs.paths.dev.js + entry;
-        filesArray.push(file)
-        entries[ path.basename(file).slice(0, - path.extname(file).length) ] = path.resolve(file);
-    })
+    configs.webpack.entries.forEach(scr => {
+        entries[ path.basename(scr).slice(0, -path.extname(scr).length) ] = path.resolve(scr);
+    });
 }
 
 var compileScripts = {
     compileJs: function () {
         const toSourceMaps = process.env.NODE_ENV !== 'prod';
         const devtool = (toSourceMaps) ? 'source-map' : '';
-        return gulp.src(filesArray)
+        return gulp.src(configs.webpack.entries)
             .pipe($.webpack({
                 entry: entries,
                 output: {
                     filename: '[name].min.js'
                 },
-                devtool: devtool,
+                devtool: 'source-map',
                 module: {
                     loaders: [{
                         test: /\.js$/,
                         loader: 'babel',
                         query: {
-                            presets: ['es2015', 'stage-2'],
+                            presets: ['es2015', 'stage-2']
                         }
                     }]
                 },
                 plugins: [
+                    // new wp.ProvidePlugin({
+                    //     $: 'jquery',
+                    //     jQuery: 'jquery'
+                    // }),
+                    // new wp.optimize.DedupePlugin(),
+                    // new CompressionPlugin(),
                     new UglifyJSPlugin({
                         sourceMap: true
                     })
-                ]
+                ],
+                target: 'web'
             }))
             .pipe(gulp.dest(configs.paths.dest.scripts))
             .on('finish', () => {
@@ -56,7 +59,7 @@ var compileScripts = {
                 // TODO: Explore autofix function with 'fix: true' prop or use gulp-fixmyjs
                 // fix: true,
                 // TODO: Explore eslint configuration
-                configFile: configs.paths.dev.js + '.eslintrc.json'
+                configFile: configs.paths.dev.js + '.eslintrc'
             }))
             // eslint.format() outputs the lint results to the console.
             // Alternatively use eslint.formatEach() (see Docs).

@@ -45,7 +45,7 @@ const compileLurch = {
         let jsonPath = '';
         return gulp.src(configs.paths.dev.js + '**/*.js')
             .pipe($.eslint({
-                configFile: configs.paths.dev.js + '.eslintrc.json'
+                configFile: configs.paths.dev.js + '.eslintrc'
             }))
             .pipe($.eslint.result(result => {
                 jsTempIssue.path = result.filePath.substring(result.filePath.indexOf('js') + 2);
@@ -73,7 +73,7 @@ const compileLurch = {
         return gulp.src(watchTodoPath)
             .pipe($.todo())
             .pipe($.todo.reporter('json', {fileName: 'todo.json'}))
-            .pipe(gulp.dest('./reports/')) 
+            .pipe(gulp.dest('./reports/'))
             .on('end', () => {
                 tdReport = _.groupBy(JSON.parse(fs.readFileSync(path.join(__dirname, '../reports', 'todo.json'))), function(t){return t.kind})
             });
@@ -131,8 +131,8 @@ const compileLurch = {
             .pipe($.nunjucks.compile())
             .pipe(gulp.dest(configs.paths.dest.base))
             .on('end', function(){
-                scssIssues = []; 
-                jsIssues = [];                
+                scssIssues = [];
+                jsIssues = [];
             })
     }
 }
