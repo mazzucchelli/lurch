@@ -1,0 +1,11 @@
+@mixin color-classes($palette) {
+    @each $color, $hex in $palette {
+        .bg__#{$color} {
+            background-color: $hex;
+        }
+
+        .color__#{$color} {
+            color: $hex;
+        }
+    }
+}

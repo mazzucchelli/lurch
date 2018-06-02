@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>chat</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-572.000000, -212.000000)" fill="#000000">
+            <path d="M587.011,223 L582,223 L582,226.469 L578.011,223 L573,223 L573,213 L587.011,213 L587.011,223 Z M572,212 L572,224 L577.408,224 L582.306,227.917 C582.596,228.125 583,227.918 583,227.561 L583,224 L588.011,224 L588.011,212 L572,212 Z M576.011,220 L584.011,220 L584.011,219 L576.011,219 L576.011,220 Z M576.011,217 L584.011,217 L584.011,216 L576.011,216 L576.011,217 Z" id="chat"></path>
+        </g>
+    </g>
+</svg>

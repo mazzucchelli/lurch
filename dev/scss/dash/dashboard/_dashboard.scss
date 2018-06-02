@@ -1,0 +1,120 @@
+.dashboard-page {
+    background-color: #42378f;
+    background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%);
+}
+
+.dashboard-container {
+    min-height: 100vh;
+    padding: $page-padding;
+    padding-right: calc(var(--pgpadding) - var(--scrollbar));
+    width: 100vw;
+    width: calc(100vw - var(--scrollbar));
+}
+
+.dashcard {
+    background: #0a0120;
+    box-shadow: 3px 3px 3px -3px rgba(10, 1, 32, 1);
+    color: white;
+    list-style: none;
+    margin-bottom: rem-calc(8);
+    margin-left: 0;
+
+    p {
+        font-size: rem-calc(14);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &--header {
+        padding: rem-calc(8 16);
+        background: #42378f;
+        position: relative;
+    }
+
+    &--title {
+        i {
+            margin-right: rem-calc(12);
+        }
+    }
+
+    &--details {
+        padding: rem-calc(16);
+        padding-top: rem-calc(8);
+    }
+
+    &__sizes {
+        .dashcard--title {
+            i {
+                margin-right: rem-calc(8);
+            }
+        }
+        .dashcard--details {
+            padding-bottom: rem-calc(8);
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__reports {
+        .dashcard--details {
+            padding-top: rem-calc(16);
+
+            a {
+                color: white;
+            }
+
+            ul {
+                list-style: none;
+                margin-left: 0;
+            }
+
+            .file {
+                margin-bottom: rem-calc(8);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .accordion-content {
+                font-size: rem-calc(14);
+            }
+        }
+
+        .issue {
+            margin-bottom: rem-calc(8);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .accordion-title {
+        &:before {
+            right: rem-calc(8);
+        }
+    }
+
+    .detail-block {
+        margin-bottom: rem-calc(8);
+        width: 100%;
+
+        &:first-child {
+            padding-top: rem-calc(8);
+        }
+
+        &--header {
+            font-size: rem-calc(14);
+            padding-left: rem-calc(4);
+        }
+
+        &--content {
+            padding-top: rem-calc(4);
+        }
+    }
+}
