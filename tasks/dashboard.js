@@ -5,8 +5,8 @@ const fs                    = require('fs');
 const _                     = require('underscore-node');
 const gulpLoadPlugins       = require('gulp-load-plugins');
 const Vinyl                 = require('vinyl');
-const each                  = require('gulp-each');
 const prettyBytes           = require('pretty-bytes');
+const comapareSize          = require('../reports/remoteAssetsReport.json');
 
 const $ = gulpLoadPlugins({
     rename: {
@@ -30,6 +30,8 @@ configs.alfred.filesize.forEach(function (v) {
 });
 let fsValues = [];
 let fsTempValue = {};
+let index = 0;
+let compareValue;
 
 // variables used in scss reporter
 let scssIssues = [];
@@ -78,23 +80,43 @@ const compileLurch = {
                 tdReport = _.groupBy(JSON.parse(fs.readFileSync(path.join(__dirname, '../reports', 'todo.json'))), function(t){return t.kind})
             });
     },
-    // FIXME: create fallback obj for getFilesizeReport()
     getFilesizeReport: function() {
+
         return gulp.src(watchFilesizePath)
-            .pipe(each(function(content, file, cb) {
+            .pipe($.each(function(content, file, cb) {
                 fsTempValue.path = file.relative;
-                fsTempValue.size = prettyBytes(file.stat.size);
+                fsTempValue.uglySize = file.stat.size;
+                fsTempValue.prettySize = prettyBytes(file.stat.size);
+                compareValue = (file.stat.size * 100 / comapareSize[index].uglySize - 100).toString();
+                compareValue = (compareValue !== '0') ? compareValue.substring(0, compareValue.indexOf('.')) + '%' : '0%';
+                fsTempValue.compare = compareValue;
                 fsValues.push(fsTempValue);
                 fsTempValue = {};
+                index += 1;
                 cb();
+                // console.log('compareValue', compareValue);
             }))
             .on('end', () => {
                 sizeReport = '';
                 sizeReport = fsValues;
             });
     },
+    saveAssetsSize: function() {
+        return gulp.src(watchFilesizePath)
+            .pipe($.each(function(content, file, cb) {
+                fsTempValue.path = file.relative;
+                fsTempValue.uglySize = file.stat.size;
+                fsTempValue.prettySize = prettyBytes(file.stat.size);
+                fsValues.push(fsTempValue);
+                fsTempValue = {};
+                cb();
+            }))
+            .on('end', () => {
+                fs.writeFileSync('reports/remoteAssetsReport.json', JSON.stringify(fsValues));
+            });
+    },
     getScssReport: function() {
-        return gulp.src(configs.paths.dev.scss + '**/*.scss')
+        return gulp.src(configs.paths.dev.scss)
             .pipe($.scsslint({
                 // 'reporterOutput': '../reports/scssReport.json',
                 customReport: function scssCustomReporter(file) {

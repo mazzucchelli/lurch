@@ -34,7 +34,7 @@
                         {% endfor %}
                     </div>
                 </div>
-                
+
                 <div class="dashcard dashcard__tasks clearfix">
                     <div class="dashcard--header">
                         <p class="dashcard--title">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="dashcard--details">
                         <ul class="js-accordion accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-                            
+
                             {% for file in scssReport %}
                                 {% if file.info.length != 0 %}
                                     <li class="accordion-item file" data-accordion-item>
@@ -100,7 +100,7 @@
                                     </li>
                                 {% endif %}
                             {% endfor %}
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                     </div>
                     <div class="dashcard--details">
                         <ul class="js-accordion accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
-                            
+
                             {% for file in jsReport %}
                                 {% if file.info.length != 0 %}
                                     <li class="accordion-item file" data-accordion-item>
@@ -145,13 +145,13 @@
                                     </li>
                                 {% endif %}
                             {% endfor %}
-                            
+
                         </ul>
                     </div>
                 </div>
 
             </section>
-            
+
             <section class="cell medium-3 large-2">
                 {% for file in sizeReport %}
                     <div class="dashcard dashcard__sizes clearfix">
@@ -159,12 +159,13 @@
                             <p class="dashcard--title">
                                 <i class="fi-page"></i>
                                 <strong>{{ file.path }}</strong>
+                                <span>+{{ file.compare }}</span>
                             </p>
                         </div>
                         <!-- TODO: compare value with prod -->
                         <div class="dashcard--details grid-x grid-padding-x align-right">
                             <p class="small-6 cell">Size</p>
-                            <p class="small-6 cell text-right"><strong>{{ file.size }}</strong></p>
+                            <p class="small-6 cell text-right"><strong>{{ file.prettySize }}</strong></p>
                         </div>
                     </div>
                 {% endfor %}

@@ -14,32 +14,36 @@ const fontsTask             = require('./tasks/fonts');
 const docsTask              = require('./tasks/docs');
 const dashboardTask         = require('./tasks/dashboard');
 
+gulp.task('saveAssetsSize',
+    dashboardTask.saveAssetsSize
+);
+
 // $ npm run lurch
-gulp.task('dashboard', 
+gulp.task('dashboard',
     gulp.series(
-        dashboardTask.getJsReport, 
-        dashboardTask.getTodoReport, 
-        dashboardTask.getScssReport, 
-        dashboardTask.getFilesizeReport, 
+        dashboardTask.getJsReport,
+        dashboardTask.getTodoReport,
+        dashboardTask.getScssReport,
+        dashboardTask.getFilesizeReport,
         dashboardTask.compileDashboard
     )
 );
 
 // $ npm run compile
 // $ npm run build
-gulp.task('compile', 
+gulp.task('compile',
     gulp.series(
-        fontsTask.generateFonts, 
-        fontsTask.fixFontsPath, 
-        fontsTask.generateFontsScss, 
+        fontsTask.generateFonts,
+        fontsTask.fixFontsPath,
+        fontsTask.generateFontsScss,
         fontsTask.moveFontFiles,
 
         gulp.parallel(
-            scriptsTask.compileJs, 
-            stylesTask.compileScss, 
-            htmlTask.compileHtml, 
-            spriteTask.compileSvg, 
-            vendorTask.compileVendors, 
+            scriptsTask.compileJs,
+            stylesTask.compileScss,
+            htmlTask.compileHtml,
+            spriteTask.compileSvg,
+            vendorTask.compileVendors,
             imagesTask.minifyImg
         )
     )
@@ -47,94 +51,94 @@ gulp.task('compile',
 
 // $ npm run compile:scss
 // $ npm run build:scss
-gulp.task('styles', 
+gulp.task('styles',
     gulp.series(
-        stylesTask.compileScss, 
+        stylesTask.compileScss,
 
-        dashboardTask.getScssReport, 
-        dashboardTask.getTodoReport, 
+        dashboardTask.getScssReport,
+        dashboardTask.getTodoReport,
         dashboardTask.compileDashboard
     )
 );
 
 // $ npm run compile:html
 // $ npm run build:html
-gulp.task('html', 
+gulp.task('html',
     htmlTask.compileHtml
 );
 
 // $ npm run compile:vendor
 // $ npm run build:vendor
-gulp.task('vendor', 
+gulp.task('vendor',
     gulp.series(
         vendorTask.compileVendors,
 
-        dashboardTask.getFilesizeReport, 
+        dashboardTask.getFilesizeReport,
         dashboardTask.compileDashboard
     )
 );
 
 // $ npm run compile:js
 // $ npm run build:js
-gulp.task('scripts', 
+gulp.task('scripts',
     gulp.series(
-        scriptsTask.compileJs, 
+        scriptsTask.compileJs,
 
-        dashboardTask.getJsReport, 
-        dashboardTask.getTodoReport, 
+        dashboardTask.getJsReport,
+        dashboardTask.getTodoReport,
         dashboardTask.compileDashboard
     )
 );
 
 // $ npm run compile:sprite
 // $ npm run build:sprite
-gulp.task('icons', 
+gulp.task('icons',
     gulp.series(
-        spriteTask.minifySvg, 
+        spriteTask.minifySvg,
         spriteTask.compileSvg,
 
-        dashboardTask.getFilesizeReport, 
+        dashboardTask.getFilesizeReport,
         dashboardTask.compileDashboard
     )
 );
 
 // $ npm run compile:fonts
 // $ npm run build:fonts
-gulp.task('fonts', 
+gulp.task('fonts',
     gulp.series(
-        fontsTask.generateFonts, 
-        fontsTask.fixFontsPath, 
-        fontsTask.generateFontsScss, 
+        fontsTask.generateFonts,
+        fontsTask.fixFontsPath,
+        fontsTask.generateFontsScss,
         fontsTask.moveFontFiles
     )
 );
 
 // $ npm run compile:assets
 // $ npm run build:assets
-gulp.task('imgmin', 
+gulp.task('imgmin',
     imagesTask.minifyImg
 );
 
 // $ npm run autofix:scss
-gulp.task('beautifyScss', 
+gulp.task('beautifyScss',
     stylesTask.beautifyScss
 );
 
 // $ npm run docs
-gulp.task('docs', 
+gulp.task('docs',
     gulp.series(
-        docsTask.generateSassDocs, 
+        docsTask.generateSassDocs,
         docsTask.generateJsDocs
     )
 );
 
 // $ npm run docs:scss
-gulp.task('scssDocs', 
+gulp.task('scssDocs',
     docsTask.generateSassDocs
 );
 
 // $ npm run docs:js
-gulp.task('jsDocs', 
+gulp.task('jsDocs',
     docsTask.generateJsDocs
 );
 
@@ -142,7 +146,7 @@ let tasksRunning = false;
 
 // $ npm run start
 gulp.task('default', () => {
-    
+
     console.log('\x1Bc');
     console.log(chalk.bold('Watching files in ' + configs.paths.dev.base + ' folder'));
 
@@ -202,7 +206,7 @@ gulp.task('default', () => {
                     images = [];
                     tasksRunning = false;
                 }));
-                
+
                 gulp.task('run')(error => {
                     console.log(chalk.red('❗️ There was an error while running the queued tasks'), error);
                     tasksRunning = false;

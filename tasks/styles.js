@@ -31,7 +31,7 @@ function scssCustomReporter(file) {
 var compileStyles = {
     compileScss: function () {
         const toSourceMaps = process.env.NODE_ENV !== 'prod';
-        return gulp.src(configs.paths.dev.scss + '**/*.scss')
+        return gulp.src(configs.paths.dev.scss)
             .pipe($.if(toSourceMaps, $.sourcemaps.init()))
             .pipe($.sass())
             .pipe($.autoprefixer({
@@ -49,7 +49,7 @@ var compileStyles = {
             .pipe(gulp.dest(configs.paths.dest.styles))
     },
     beautifyScss: function () {
-        return gulp.src(configs.paths.dev.scss + '**/*.scss', {base: './'})
+        return gulp.src(configs.paths.dev.scss, {base: './'})
         .pipe($.csscomb())
         .pipe(gulp.dest('./'))
     }
