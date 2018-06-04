@@ -74,6 +74,7 @@ module.exports = {
             dest + 'styles/widgets.css',
             dest + 'styles/plp.css',
             dest + 'styles/pdp.css',
+            dest + 'styles/cart.css',
             dest + 'styles/myaccount.css',
             dest + 'styles/checkout.css',
             dest + 'scripts/main.min.js',

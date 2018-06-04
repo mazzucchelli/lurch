@@ -7,6 +7,9 @@
     "start": "gulp",
     "tool:dashboard": "gulp dashboard",
     "tool:saveData": "gulp saveAssetsSize",
+    "tool:docs": "gulp docs",
+    "tool:docs:scss": "gulp scssDocs",
+    "tool:docs:js": "gulp jsDocs",
     "compile": "gulp compile",
     "compile:scss": "gulp styles",
     "compile:js": "gulp scripts",
@@ -25,10 +28,7 @@
     "build:fonts": "NODE_ENV='prod' gulp fonts",
     "build:assets": "NODE_ENV='prod' gulp imgmin",
     "autofix:scss": "gulp beautifyScss",
-    "autofix:svg": "gulp svgmin",
-    "docs": "gulp docs",
-    "docs:scss": "gulp scssDocs",
-    "docs:js": "gulp jsDocs"
+    "autofix:svg": "gulp svgmin"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
