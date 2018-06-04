@@ -5,7 +5,8 @@
   "author": "mmazzucchelli <mazzucchelli.wrk@gmail.com>",
   "scripts": {
     "start": "gulp",
-    "dashboard": "gulp dashboard",
+    "tool:dashboard": "gulp dashboard",
+    "tool:saveData": "gulp saveAssetsSize",
     "compile": "gulp compile",
     "compile:scss": "gulp styles",
     "compile:js": "gulp scripts",
