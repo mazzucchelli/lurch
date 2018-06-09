@@ -19,13 +19,13 @@ let scssReport, sizeReport, jsReport, tdReport;
 
 // get files for todo reporter
 let watchTodoPath = [];
-configs.todowatch.forEach(function (v) {
+configs.lurch.todowatch.forEach(function (v) {
     watchTodoPath.push(path.join(__dirname, '..', v));
 });
 
 // get files for todo reporter
 let watchFilesizePath = [];
-configs.alfred.filesize.forEach(function (v) {
+configs.lurch.filesize.forEach(function (v) {
     watchFilesizePath.push(path.join(__dirname, '..', v));
 });
 let fsValues = [];
@@ -45,9 +45,9 @@ let jsTempInfo = [];
 const compileLurch = {
     getJsReport: function() {
         let jsonPath = '';
-        return gulp.src(configs.paths.dev.js + '**/*.js')
+        return gulp.src(configs.lurch.lint.js)
             .pipe($.eslint({
-                configFile: configs.paths.dev.js + '.eslintrc'
+                configFile: configs.paths.dev.base + 'js/.eslintrc'
             }))
             .pipe($.eslint.result(result => {
                 jsTempIssue.path = result.filePath.substring(result.filePath.indexOf('js') + 2);
@@ -116,7 +116,7 @@ const compileLurch = {
             });
     },
     getScssReport: function() {
-        return gulp.src(configs.paths.dev.scss)
+        return gulp.src(configs.lurch.lint.scss)
             .pipe($.scsslint({
                 // 'reporterOutput': '../reports/scssReport.json',
                 customReport: function scssCustomReporter(file) {

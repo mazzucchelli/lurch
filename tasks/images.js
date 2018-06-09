@@ -4,7 +4,7 @@ const $                     = require('gulp-load-plugins')();
 
 var imagesMin = {
     minifyImg: function() {
-        return gulp.src(configs.paths.dev.images + '*')
+        return gulp.src(configs.paths.dev.images)
             .pipe($.imagemin([
                 $.imagemin.gifsicle({interlaced: true}),
                 $.imagemin.jpegtran({progressive: true}),

@@ -9,16 +9,18 @@ module.exports = {
     paths: {
         dev: {
             base: dev,
-            js: dev + 'js/',
+            js: [
+                dev + 'js/dashboard.js'
+            ],
             scss: [
                 dev + 'scss/*.scss'
             ],
-            images: dev + 'images/',
+            images: dev + 'images/*',
             svg: dev + 'svg/',
             fonts: {
-                filesource: dev + 'fonts/',
+                filesource: dev + 'fonts/**/*.{ttf,otf}',
                 tempdest: './fontdest/',
-                scssdest: dev + 'scss/configs/',
+                scssdest: dev + 'scss/setup/',
                 scssname: '_fonts.scss',
                 urlReplace: {
                     from: 'url("',
@@ -44,28 +46,28 @@ module.exports = {
         "uikit",
         "widgets"
     ],
-    sassdoc: {
-        src: './node_modules/foundation-sites/scss/**/*.scss',
-        dest: './docs/styles/'
-    },
-    todowatch: [
-        dev + '*.{html|njk}',
-        dev + 'js/**/*.js',
-        dev + 'scss/**/*.scss',
-        './tasks/*.js',
-        './gulpfile.js',
-        './gulpconfigs.js'
-    ],
-    webpack: {
-        entries: [
-            dev + 'js/dashboard.js'
-        ]
-    },
-    alfred: {
+    lurch: {
+        path: './dashboard/*.html',
         filesize: [
             dest + 'styles/dashboard.css',
             dest + 'scripts/dashboard.min.js',
             dest + 'media/sprite.svg'
-        ]
+        ],
+        lint: {
+            js: dev + 'js/**/*.js',
+            scss: dev + 'scss/**/*.scss'
+        },
+        todowatch: [
+            dev + '*.{html|njk}',
+            dev + 'js/**/*.js',
+            dev + 'scss/**/*.scss',
+            './tasks/*.js',
+            './gulpfile.js',
+            './gulpconfigs.js'
+        ],
+        sassdoc: {
+            src: './node_modules/foundation-sites/scss/**/*.scss',
+            dest: './docs/styles/'
+        }
     }
 }

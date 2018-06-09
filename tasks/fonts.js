@@ -5,7 +5,7 @@ const del                   = require("del");
 
 var fontsTask = {
     generateFonts: function() {
-        return gulp.src(configs.paths.dev.fonts.filesource + '**/*.{ttf,otf}')
+        return gulp.src(configs.paths.dev.fonts.filesource)
             .pipe($.fontgen({
                 dest: configs.paths.dev.fonts.tempdest
             }));
@@ -13,7 +13,7 @@ var fontsTask = {
     fixFontsPath: function() {
         return gulp.src(configs.paths.dev.fonts.tempdest + '*.css')
             .pipe($.replace(
-                configs.paths.dev.fonts.urlReplace.from, 
+                configs.paths.dev.fonts.urlReplace.from,
                 configs.paths.dev.fonts.urlReplace.to
             ))
             .pipe(gulp.dest(configs.paths.dev.fonts.tempdest))

@@ -8,7 +8,7 @@ const $                     = require('gulp-load-plugins')();
 let issuesJson; // update todo list here
 
 var watchPath = [];
-configs.todowatch.forEach(function (v) {
+configs.lurch.todowatch.forEach(function (v) {
     watchPath.push(path.join(__dirname, '..', v));
 });
 
