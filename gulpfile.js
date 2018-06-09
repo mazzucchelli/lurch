@@ -112,7 +112,7 @@ gulp.task('default', () => {
     let images = [];
     let tasksDebounce = null;
 
-    gulp.watch('dev/**', { ignoreInitial: true }).on('all', (event, location) => {
+    gulp.watch(configs.paths.dev.base + '**', { ignoreInitial: true }).on('all', (event, location) => {
         if (event === 'addDir' || path.basename(location) === '.DS_Store') return;
 
         tasksRunning = true;

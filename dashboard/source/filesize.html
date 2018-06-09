@@ -1,0 +1,23 @@
+{% extends "njk/_base.njk" %}
+
+{% block main %}
+    <div class="filesize-container grid-x grid-padding-x">
+        {% for file in sizeReport %}
+            <section class="cell medium-3 large-2">
+                <div class="dashcard dashcard__sizes clearfix">
+                    <div class="dashcard--header">
+                        <p class="dashcard--title">
+                            <i class="fi-page"></i>
+                            <strong>{{ file.path }}</strong>
+                        </p>
+                    </div>
+                    <!-- TODO: compare value with prod -->
+                    <div class="dashcard--details grid-x grid-padding-x align-right">
+                        <p class="small-6 cell"><strong>{{ file.prettySize }}</strong></p>
+                        <p class="small-6 cell text-right">{{ file.compare }}%</p>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+{% endblock %}

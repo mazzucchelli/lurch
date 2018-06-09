@@ -1,0 +1,45 @@
+{% extends "njk/_base.njk" %}
+
+{% block main %}
+    <div class="dashcard dashcard__tasks clearfix">
+        <div class="dashcard--header">
+            <p class="dashcard--title">
+                <i class="fi-results"></i><strong>Todo tasks - {{ todoReport.TODO.length }}</strong>
+            </p>
+        </div>
+        <div class="dashcard--details">
+            {% for todo in todoReport.TODO %}
+                <div class="detail-block">
+                    <div class="detail-block--header">
+                        <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
+                    </div>
+                    <div class="detail-block--content">
+                        <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
+                    </div>
+                </div>
+                {% if loop.index != loop.length %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dashcard dashcard__tasks clearfix">
+        <div class="dashcard--header">
+            <p class="dashcard--title">
+                <i class="fi-results"></i><strong>Fixme tasks - {{ todoReport.FIXME.length }}</strong>
+            </p>
+        </div>
+        <div class="dashcard--details">
+            {% for todo in todoReport.FIXME %}
+                <div class="detail-block">
+                    <div class="detail-block--header">
+                        <i class="fi-page"></i> <strong>{{ todo.file }}</strong>
+                    </div>
+                    <div class="detail-block--content">
+                        <p>at line <strong>{{ todo.line }}</strong>: {{ todo.text }}</p>
+                    </div>
+                </div>
+                {% if loop.index != loop.length %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "njk/_base.njk" %}
+
+{% block main %}
+    {% for file in data.fileSizes %}
+        <div class="card">
+            <h4>{{ file.name }}</h4>
+            <div class="status">{{ file.status }}</div>
+            <div class="size">{{ file.size }}</div>
+            <div class="saved-size">{{ file.savedSize }}</div>
+        </div>
+    {% endfor %}
+{% endblock %}

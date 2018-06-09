@@ -2,18 +2,22 @@ const dev = './dev/';
 const app = './app/';
 const build = './build/';
 const pkg = './node_modules/';
+const dash = './dashboard/';
 
 const dest = (process.env.NODE_ENV == 'prod') ? build : app;
 
 module.exports = {
     paths: {
         dev: {
-            base: dev,
+            // base: dev,
+            base: dash,
             js: [
-                dev + 'js/dashboard.js'
+                // dev + 'js/dashboard.js'
+                dash + 'source/js/app.js'
             ],
             scss: [
-                dev + 'scss/*.scss'
+                // dev + 'scss/*.scss'
+                dash + 'source/scss/*.scss'
             ],
             images: dev + 'images/*',
             svg: dev + 'svg/',
@@ -30,8 +34,10 @@ module.exports = {
         },
         dest: {
             base: dest,
-            scripts: dest + 'scripts/',
-            styles: dest + 'styles/',
+            // scripts: dest + 'scripts/',
+            // styles: dest + 'styles/',
+            scripts: dash + 'js/',
+            styles: dash + 'css/',
             media: dest + 'media/',
             uikit: dest + 'uikit/',
             fonts: dest + 'styles/fonts/'
@@ -47,7 +53,7 @@ module.exports = {
         "widgets"
     ],
     lurch: {
-        source: './dashboard/source/*.{html,njk}',
+        source: './dashboard/source/**/*.html',
         dest: './dashboard/',
         filesize: [
             dest + 'styles/dashboard.css',
@@ -62,9 +68,9 @@ module.exports = {
             dev + '*.{html|njk}',
             dev + 'js/**/*.js',
             dev + 'scss/**/*.scss',
-            './tasks/*.js',
-            './gulpfile.js',
-            './gulpconfigs.js'
+            // './tasks/*.js',
+            // './gulpfile.js',
+            // './gulpconfigs.js'
         ],
         sassdoc: {
             src: './node_modules/foundation-sites/scss/**/*.scss',

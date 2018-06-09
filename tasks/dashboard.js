@@ -46,9 +46,7 @@ const compileLurch = {
     getJsReport: function() {
         let jsonPath = '';
         return gulp.src(configs.lurch.lint.js)
-            .pipe($.eslint({
-                configFile: configs.paths.dev.base + 'js/.eslintrc'
-            }))
+            .pipe($.eslint())
             .pipe($.eslint.result(result => {
                 jsTempIssue.path = result.filePath.substring(result.filePath.indexOf('js') + 2);
                 result.messages.forEach(issue => {

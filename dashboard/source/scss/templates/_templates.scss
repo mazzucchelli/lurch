@@ -1,0 +1,26 @@
+@import 'dash';
+
+[data-template="body"] {
+    --grid-padding: 0;
+    --grid-template-columns: 200px 1fr;
+    @include grid();
+
+    height: 100vh;
+
+    aside {
+        border-right: 4px solid var(--color-black);
+        color: var(--color-white);
+        background: var(--color-primary);
+
+        ul {
+            margin: 0;
+            padding: 0 10px;
+            list-style: none;
+
+            li {
+                padding: 10px;
+                border-bottom: 1px solid var(--color-grey-light);
+            }
+        }
+    }
+}
