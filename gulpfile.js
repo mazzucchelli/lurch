@@ -24,7 +24,7 @@ gulp.task('dashboard',
     )
 );
 
-gulp.task('saveAssetsSize',
+gulp.task('savedata',
     dashboardTask.saveAssetsSize
 );
 
