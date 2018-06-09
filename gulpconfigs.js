@@ -47,7 +47,8 @@ module.exports = {
         "widgets"
     ],
     lurch: {
-        path: './dashboard/*.html',
+        source: './dashboard/source/*.{html,njk}',
+        dest: './dashboard/',
         filesize: [
             dest + 'styles/dashboard.css',
             dest + 'scripts/dashboard.min.js',

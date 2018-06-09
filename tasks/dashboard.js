@@ -145,13 +145,13 @@ const compileLurch = {
             });
     },
     compileDashboard: function() {
-        return gulp.src(configs.paths.dev.base + 'dashboard.{html,njk}')
+        return gulp.src(configs.lurch.source)
             .pipe($.data(() => ({scssReport: scssReport})))
             .pipe($.data(() => ({sizeReport: sizeReport})))
             .pipe($.data(() => ({jsReport: jsReport})))
             .pipe($.data(() => ({todoReport: tdReport})))
             .pipe($.nunjucks.compile())
-            .pipe(gulp.dest(configs.paths.dest.base))
+            .pipe(gulp.dest(configs.lurch.dest))
             .on('end', function(){
                 scssIssues = [];
                 jsIssues = [];
